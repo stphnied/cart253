@@ -2,4 +2,4 @@
 
 Course work for CART253!
 
-[Check out my homepage] (https://stphnied.github.io/)
+[Check out my homepage](https://stphnied.github.io/)
