@@ -11,6 +11,13 @@ let circleY = 250;
 let circleSpeed = 1;
 let circleAcceleration =0.25;
 
+let circle = {
+  x: 0,
+  y: 200,
+  size: 200,
+  speed: 5
+};
+
 // setup()
 //
 // Description of setup() goes here.
@@ -36,9 +43,17 @@ function draw() {
   // ----- vid 02 : Creating variables
   background(bgColor);
   // ellipse(circleX,circleY,circleSize);
+
+
   //----- vid 03 :  Changing variables
+  fill('red');
   circleX += circleSpeed;
   circleSpeed += circleAcceleration;
   ellipse(circleX,circleY,circleSize);
-  
+
+  // ----vid 04 : Javascript Objects
+  fill('blue');
+  circle.x += circle.speed;
+  ellipse(circle.x,circle.y,circle.size);
+
 }
