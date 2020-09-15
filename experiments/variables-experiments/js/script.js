@@ -15,7 +15,8 @@ let circle = {
   x: 0,
   y: 200,
   size: 200,
-  speed: 5
+  speed: 5,
+  fill:0
 };
 
 // setup()
@@ -40,20 +41,30 @@ function draw() {
   //rect(250,250,mouseX,mouseY); //resize the rect with mouse
 
 
-  // ----- vid 02 : Creating variables
+  // ---- vid 02 : Creating variables
   background(bgColor);
   // ellipse(circleX,circleY,circleSize);
 
 
-  //----- vid 03 :  Changing variables
+  // ---- vid 03 :  Changing variables
   fill('red');
   circleX += circleSpeed;
   circleSpeed += circleAcceleration;
   ellipse(circleX,circleY,circleSize);
 
-  // ----vid 04 : Javascript Objects
-  fill('blue');
+  // ---- vid 04 : Javascript Objects
+  // fill('blue');
+  // circle.x += circle.speed;
+  // ellipse(circle.x,circle.y,circle.size);
+
+  // ---- vid 06 : Random numbers
+  let randomNumb = random(-5,255);
+  circle.x = 250;
+  circle.speed = random(-5,5);
   circle.x += circle.speed;
+
+  circle.fill = random(0,255);
+  fill(circle.fill);
   ellipse(circle.x,circle.y,circle.size);
 
 }
