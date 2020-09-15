@@ -6,8 +6,10 @@ Here is a description of this template p5 project.
 **************************************************/
 let bgColor = 0;
 let circleSize;
-let circleX = 250;
+let circleX = 0;
 let circleY = 250;
+let circleSpeed = 1;
+let circleAcceleration =0.25;
 
 // setup()
 //
@@ -31,8 +33,12 @@ function draw() {
   //rect(250,250,mouseX,mouseY); //resize the rect with mouse
 
 
-// ----- vid 02 : Creating variables
+  // ----- vid 02 : Creating variables
   background(bgColor);
+  // ellipse(circleX,circleY,circleSize);
+  //----- vid 03 :  Changing variables
+  circleX += circleSpeed;
+  circleSpeed += circleAcceleration;
   ellipse(circleX,circleY,circleSize);
-
+  
 }
