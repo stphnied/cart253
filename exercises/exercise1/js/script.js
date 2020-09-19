@@ -154,7 +154,7 @@ function draw() {
     // Background color
     bg.r = map(mouseY,0,width,10,50);
     bg.g = map(mouseY,0,width,0,100);
-    bg.b = map(mouseY,0,width,50,255)
+    bg.b = map(mouseY,0,width,50,255);
     background(bg.r,bg.g,bg.b);
 
     // Call functions 
@@ -164,7 +164,7 @@ function draw() {
     createCorpse();
 }
 
-// Create the environment objects
+// Create the environment objects ----------------------------------------------------------------
 function createEnvironment() {
     // Stars
     star.x = random(width);
@@ -172,7 +172,7 @@ function createEnvironment() {
     star.size = random(2, 10);
     ellipse(mouseX,mouseY,star.size,star.size);
     ellipse(star.x, star.y, star.size,star.size);
-    // // window
+    //Window frame
     windowWall.y = 0;
     windowWall.w = width;
     windowWall.h = height/1.3;
@@ -181,20 +181,21 @@ function createEnvironment() {
     noFill();
     rect(windowWall.x, windowWall.y, windowWall.w, windowWall.h);
 
-    // floor
+    // Floor
     floor.y = height/1.75;
     floor.w = width;
     fill('grey');
     rect(floor.x,floor.y,floor.w,floor.h);
-}
+}// end of function
 
-// Imposter character
+// Imposter character ----------------------------------------------------------------
 function createImposter () {
 
     // Hat
     rectMode(CENTER);
     fill('green');
 
+    // Leaves
     beginShape();
     vertex(body.x, body.y / 2);
     quadraticVertex(800, 250, 750, 200);
@@ -264,61 +265,10 @@ function createImposter () {
     fill(255);
     rect(face.x, face.y, face.w * 0.7, face.h * 0.5, face.r);
 
-}
+}// end of function
 
-// Dead body 
+// Dead body ----------------------------------------------------------------------------
 function createCorpse() {
-    
-    // Leg (Top)
-    deadLegs.x = deadBody.x * 1.12;
-    deadLegs.y = deadBody.y * 1.06;
-    deadLegs.w = 225;
-    deadLegs.h = 40;
-    fill(teal.r, teal.g / 1.5, teal.b / 1.5);
-    rect(deadLegs.x, deadLegs.y, deadLegs.w, deadLegs.h, deadLegs.r);
-
-    // Shadow
-    deadShadow.x = deadBody.x * 1.15;
-    deadShadow.y = deadBody.y * 1.25;
-    deadShadow.r = 2;
-    deadShadow.w = 450;
-    deadShadow.h = 100;
-    fill(0, 75);
-    ellipse(deadShadow.x, deadShadow.y, deadShadow.w, deadShadow.h, deadShadow.r);
 
 
-    // Body
-    deadBody.x = width/1.5;
-    deadBody.y = height/1.5;
-    fill(teal.r, teal.g, teal.b);
-    rect(deadBody.x, deadBody.y, deadBody.w, deadBody.h,deadBody.r);
-
-
-    // Leg (Bottom)
-    deadLegs.x = deadBody.x * 1.12;
-    deadLegs.y = deadBody.y * 1.12;
-    deadLegs.w = 235;
-    deadLegs.h = 60;
-    fill(teal.r, teal.g, teal.b);
-    rect(deadLegs.x, deadLegs.y, deadLegs.w, deadLegs.h, deadLegs.r);
-
-    // Body (Darken)
-    fill(teal.r,teal.g/1.5,teal.b/1.5);
-    rect(deadBody.x, deadBody.y, deadBody.w/2, deadBody.h, deadBody.r);
-
-    // Bone (core)
-    bones.x = deadBody.x/1.05;
-    bones.y = deadBody.y*1.1;
-    fill(255);
-    rect(bones.x, bones.y, bones.w, bones.h, bones.r);
-
-    // Bone (top)
-    bonesCircle.x = bones.x*1;
-    bonesCircle.y = bones.y;
-    ellipse(bonesCircle.x,bonesCircle.y,bonesCircle.size);
-
-    //Bone (bottom)
-    bonesCircle.y = bones.y * 1.07;
-    ellipse(bonesCircle.x, bonesCircle.y, bonesCircle.size);
-
-}
+}// end of function
