@@ -198,8 +198,8 @@ function createImposter () {
     // Leaves
     beginShape();
     vertex(body.x, body.y / 2);
-    quadraticVertex(800, 250, 750, 200);
-    quadraticVertex(930, 255, 900, 300);
+    quadraticVertex(800, 250, 800, 200);
+    // quadraticVertex(930, 255, 900, 300);
     endShape(CLOSE)
     
     rectMode(CENTER);
@@ -269,6 +269,55 @@ function createImposter () {
 
 // Dead body ----------------------------------------------------------------------------
 function createCorpse() {
+    
+    // Leg (Top)
+    deadLegs.x = deadBody.x * 1.12;
+    deadLegs.y = deadBody.y * 1.06;
+    deadLegs.w = 225;
+    deadLegs.h = 40;
+    fill(teal.r, teal.g / 1.5, teal.b / 1.5);
+    rect(deadLegs.x, deadLegs.y, deadLegs.w, deadLegs.h, deadLegs.r);
 
+    // Shadow
+    deadShadow.x = deadBody.x * 1.15;
+    deadShadow.y = deadBody.y * 1.25;
+    deadShadow.r = 2;
+    deadShadow.w = 450;
+    deadShadow.h = 100;
+    fill(0, 75);
+    ellipse(deadShadow.x, deadShadow.y, deadShadow.w, deadShadow.h, deadShadow.r);
+
+    // Body
+    deadBody.x = width/1.5;
+    deadBody.y = height/1.5;
+    fill(teal.r, teal.g, teal.b);
+    rect(deadBody.x, deadBody.y, deadBody.w, deadBody.h,deadBody.r);
+
+    // Leg (Bottom)
+    deadLegs.x = deadBody.x * 1.12;
+    deadLegs.y = deadBody.y * 1.12;
+    deadLegs.w = 235;
+    deadLegs.h = 60;
+    fill(teal.r, teal.g, teal.b);
+    rect(deadLegs.x, deadLegs.y, deadLegs.w, deadLegs.h, deadLegs.r);
+
+    // Body (Darken)
+    fill(teal.r,teal.g/1.5,teal.b/1.5);
+    rect(deadBody.x, deadBody.y, deadBody.w/2, deadBody.h, deadBody.r);
+
+    // Bone (core)
+    bones.x = deadBody.x/1.05;
+    bones.y = deadBody.y*1.1;
+    fill(255);
+    rect(bones.x, bones.y, bones.w, bones.h, bones.r);
+
+    // Bone (top)
+    bonesCircle.x = bones.x*1;
+    bonesCircle.y = bones.y;
+    ellipse(bonesCircle.x,bonesCircle.y,bonesCircle.size);
+
+    //Bone (bottom)
+    bonesCircle.y = bones.y * 1.07;
+    ellipse(bonesCircle.x, bonesCircle.y, bonesCircle.size);
 
 }// end of function
