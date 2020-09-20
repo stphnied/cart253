@@ -189,7 +189,7 @@ function createEnvironment() {
     ellipse(mouseX, mouseY, star.size, star.size);
     ellipse(star.x, star.y, star.size, star.size);
 
-    // Clouds 
+    // Cloud 01
     translate(cloud.x);
     fill(cloud.fill);
 
@@ -227,22 +227,65 @@ function createEnvironment() {
     cloud.y = 70;
     ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Bottom left
 
+
+    // Cloud 02
+    cloud.x = 310;
+    cloud.x += cloud.speed;
+    cloud.y = 300;
+    cloud.w = 80;
+    cloud.h = 80;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Top center
+
+    cloud.x = 330;
+    cloud.x += cloud.speed;
+    cloud.y = 325;
+    cloud.h = 65;
+    cloud.w = 75;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Center right
+
+    fill(cloud.fill);
+    cloud.x = 280;
+    cloud.x += cloud.speed;
+    cloud.w = 85;
+    cloud.h = 70;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Center left
+
+    fill(cloud.fill);
+    cloud.x = 335;
+    cloud.x += cloud.speed;
+    cloud.y = 290;
+    cloud.w = 50;
+    cloud.h = 50;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Top right
+
+    fill(cloud.fill);
+    cloud.x = 285;
+    cloud.x += cloud.speed;
+    cloud.y = 320;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Bottom left
+
     // Moves the cloude back and forth
-    // Code taken from :  cmorgantywls
-    if(cloud.x > width){
+    // Code inspired by : cmorgantywls
+
+    // If it passes the width changeDirection = true
+    // Else = false
+    if(cloud.x > width + 100){
         changeDirection = true;
-    } else if (cloud.x <=0 ) {
+    } 
+    else if (cloud.x <=0 ) {
         changeDirection = false;
     }
 
-    if (cloud.x >= 0 && changeDirection == false) {
-        cloud.x += cloud.speed;
-        cloud.speed++;
-    } else if (changeDirection == true) {
-        cloud.x += cloud.speed;
-        cloud.speed--;
+    //  If changeDirection is false : go forwards
+    // Else go backwards
+    if (changeDirection == false) {
+        // cloud.x += cloud.speed;
+        cloud.speed += 2;
+    } 
+    else if (changeDirection == true) {
+        cloud.x -= cloud.speed;
+        cloud.speed += -1.5;
     }
-
 
     //Window frame
     windowWall.y = 0;
