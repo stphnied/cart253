@@ -7,6 +7,7 @@ Among us crime scene!
 
 **************************************************/
 
+// Environment objects 
 let bg = {
     r: 17,
     g: 32,
@@ -37,6 +38,14 @@ let star = {
     size: 1
 };
 
+let cloud = {
+    x:0,
+    y:50,
+    w:60,
+    h:60,
+    fill:255,
+    speed: 100
+};
 
 // Imposter objects
 let body = {
@@ -46,7 +55,7 @@ let body = {
     h: 310,
     r: 80,
     fill: 0
-}
+};
 
 let legs = {
     x: 0,
@@ -55,7 +64,7 @@ let legs = {
     h: 235,
     r: 30,
     fill: 0
-}
+};
 
 let face = {
     x: 0,
@@ -64,7 +73,7 @@ let face = {
     h: 70,
     r: 30,
     fill: 0
-}
+};
 
 let backpack = {
     x: 0,
@@ -73,7 +82,7 @@ let backpack = {
     h: 200,
     r: 30,
     fill: 0
-}
+};
 
 
 // Corpse objects
@@ -139,7 +148,7 @@ let blue = {
     r: 117,
     g: 219,
     b: 244
-}
+};
 
 let teal = {
     r: 27,
@@ -147,15 +156,16 @@ let teal = {
     b: 255
 };
 
-// setup()
-// Description of setup() goes here.
+let changeDirection;
+
+// Setting the canvas dimension -----------------------------------------------------------------
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    changeDirection = false;
 }
 
-// draw()
+// Draw crime scene
 function draw() {
-
     // Background color
     bg.r = map(mouseY, 0, width, 10, 50);
     bg.g = map(mouseY, 0, width, 0, 100);
@@ -169,14 +179,71 @@ function draw() {
     createCorpse();
 }
 
-// Create the environment objects ----------------------------------------------------------------
+// Draw the environment objects ----------------------------------------------------------------
 function createEnvironment() {
+
     // Stars
     star.x = random(width);
     star.y = random(height);
     star.size = random(2, 10);
     ellipse(mouseX, mouseY, star.size, star.size);
     ellipse(star.x, star.y, star.size, star.size);
+
+    // Clouds 
+    translate(cloud.x);
+    fill(cloud.fill);
+
+    cloud.x = 110;
+    cloud.x += cloud.speed;
+    cloud.y = 55;
+    cloud.w = 60;
+    cloud.h = 70;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Top center
+
+    cloud.x = 130;
+    cloud.x += cloud.speed;
+    cloud.y = 60;
+    cloud.h = 40;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Center right
+
+    fill(cloud.fill);
+    cloud.x = 80;
+    cloud.x += cloud.speed;
+    cloud.w = 45;
+    cloud.h = 30;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Center left
+
+    fill(cloud.fill);
+    cloud.x = 135;
+    cloud.x += cloud.speed;
+    cloud.y = 45;
+    cloud.w = 20;
+    cloud.h = 20;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Top right
+
+    fill(cloud.fill);
+    cloud.x = 85;
+    cloud.x += cloud.speed;
+    cloud.y = 70;
+    ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Bottom left
+
+    // Moves the cloude back and forth
+    // Code taken from :  cmorgantywls
+    if(cloud.x > width){
+        changeDirection = true;
+    } else if (cloud.x <=0 ) {
+        changeDirection = false;
+    }
+
+    if (cloud.x >= 0 && changeDirection == false) {
+        cloud.x += cloud.speed;
+        cloud.speed++;
+    } else if (changeDirection == true) {
+        cloud.x += cloud.speed;
+        cloud.speed--;
+    }
+
+
     //Window frame
     windowWall.y = 0;
     windowWall.w = width;
@@ -186,8 +253,6 @@ function createEnvironment() {
     noFill();
     rect(windowWall.x, windowWall.y, windowWall.w, windowWall.h);
 
-    // Clouds 
-
     // Floor
     floor.y = height / 1.75;
     floor.w = width;
@@ -195,20 +260,19 @@ function createEnvironment() {
     rect(floor.x, floor.y, floor.w, floor.h);
 } // end of function
 
-// Create imposter character ----------------------------------------------------------------
+
+// Draw imposter character ----------------------------------------------------------------
 function createImposter() {
 
     // Hat
     rectMode(CENTER);
     fill('green');
-
-    // Leaves
-    beginShape();
+    beginShape();     // Leaves
     vertex(body.x, body.y / 2);
     quadraticVertex(800, 250, 800, 200);
     endShape(CLOSE)
     rectMode(CENTER);
-    rect(body.x, body.y / 1.75, 15, 100, 20);
+    rect(body.x, body.y / 1.75, 15, 100, 20);     // Stem
 
 
     // Body
@@ -246,7 +310,7 @@ function createImposter() {
     // Body (lighten)
     rectMode(CORNER);
     red.r = 242,
-        red.g = 23;
+    red.g = 23;
     red.b = 23;
     fill(red.r, red.g, red.b);
     rect(body.x / 1.12, body.y / 1.5, body.w / 1.05, body.h / 1.05, body.r);
@@ -271,7 +335,8 @@ function createImposter() {
 
 } // end of function
 
-// Create dead body ----------------------------------------------------------------------------
+
+// Draw dead body ----------------------------------------------------------------------------
 function createCorpse() {
 
     // Leg (Top)
