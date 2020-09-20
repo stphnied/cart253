@@ -137,6 +137,17 @@ let deadShadow = {
     fill: 0
 };
 
+
+let warningSign = {
+    x:0,
+    y:0,
+    w:0,
+    h:0,
+    r:0,
+    fill:'red',
+    growth:0
+} 
+
 // Colors
 let red = {
     r: 242,
@@ -177,6 +188,7 @@ function draw() {
     noStroke();
     createImposter();
     createCorpse();
+    warningSymbol();
 }
 
 // Draw the environment objects ----------------------------------------------------------------
@@ -186,6 +198,7 @@ function createEnvironment() {
     star.x = random(width);
     star.y = random(height);
     star.size = random(2, 10);
+    fill(255);
     ellipse(mouseX, mouseY, star.size, star.size);
     ellipse(star.x, star.y, star.size, star.size);
 
@@ -286,7 +299,7 @@ function createEnvironment() {
         cloud.x -= cloud.speed;
         cloud.speed += -1.5;
     }
-
+    rectMode(CORNER);
     //Window frame
     windowWall.y = 0;
     windowWall.w = width;
@@ -332,7 +345,6 @@ function createImposter() {
     shadow.y = body.y * 1.5;
     fill(0, 75);
     ellipse(shadow.x, shadow.y, shadow.w, shadow.h);
-
 
     // Backpack
     backpack.x = body.x / 1.14;
@@ -415,7 +427,7 @@ function createCorpse() {
 
     // Body (Darken)
     fill(teal.r, teal.g / 1.5, teal.b / 1.5);
-    rect(deadBody.x, deadBody.y, deadBody.w / 2, deadBody.h, deadBody.r);
+    let e = rect(deadBody.x, deadBody.y, deadBody.w / 2, deadBody.h, deadBody.r);
 
     // Bone (core)
     bones.x = deadBody.x / 1.05;
@@ -432,4 +444,29 @@ function createCorpse() {
     bonesCircle.y = bones.y * 1.07;
     ellipse(bonesCircle.x, bonesCircle.y, bonesCircle.size);
 
+
 } // end of function
+
+function warningSymbol () {
+
+    // ! (Top)
+    rectMode(CENTER);
+    warningSign.x = deadBody.x * 1.13;
+    warningSign.y = deadBody.y / 1.2;
+    warningSign.w = 20 + warningSign.growth;
+    warningSign.h = 70 + warningSign.growth;
+    warningSign.growth++;
+    warningSign.growth = constrain(warningSign.growth, 0, 20);
+    warningSign.r = 30;
+    fill(warningSign.fill);
+    rect(warningSign.x, warningSign.y, warningSign.w, warningSign.h, warningSign.r);
+
+
+    // ! (dot)
+    warningSign.y = warningSign.y * 1.2;
+    warningSign.h = 15 + warningSign.growth;
+    warningSign.w = 15 + warningSign.growth;
+    warningSign.growth++;
+    rect(warningSign.x, warningSign.y, warningSign.w, warningSign.h, warningSign.r);
+
+}

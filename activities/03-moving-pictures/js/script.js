@@ -49,6 +49,7 @@ function draw() {
     // Circle (Left) --------------------------------
     oCircle1.x += oCircle1.speed;
     oCircle1.x = constrain(oCircle1.x, 0, width/2);
+
     oCircle1.size += oCircle1.growthRate;
     oCircle1.size = constrain(oCircle1.size,0,width);
 
@@ -59,6 +60,7 @@ function draw() {
     // Circle (Right) --------------------------------
     oCircle2.x += oCircle2.speed;
     oCircle2.x = constrain(oCircle2.x,width/2,width);
+    
     oCircle2.size = oCircle1.size * oCircle2.sizeRatio;
     oCircle2.size = constrain(oCircle2.size,0,width);
 
