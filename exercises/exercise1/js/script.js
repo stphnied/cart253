@@ -3,12 +3,14 @@ EXERCISE 01 : I like to move it move it!
 Stephanie Dang
 
 Among us crime scene!
+(This exercise was inspired by the game 'Among us')
 
 **************************************************/
+
 let bg = {
-    r:17,
-    g:32,
-    b:87
+    r: 17,
+    g: 32,
+    b: 87
 };
 
 let floor = {
@@ -30,19 +32,20 @@ let windowWall = {
 }
 
 let star = {
-    x:0,
-    y:0,
+    x: 0,
+    y: 0,
     size: 1
-
 };
 
+
+// Imposter objects
 let body = {
     x: 0,
     y: 0,
     w: 200,
     h: 310,
     r: 80,
-    fill:0
+    fill: 0
 }
 
 let legs = {
@@ -73,6 +76,7 @@ let backpack = {
 }
 
 
+// Corpse objects
 let deadBody = {
     x: 0,
     y: 0,
@@ -107,12 +111,12 @@ let bonesCircle = {
 };
 
 let shadow = {
-    x:0,
-    y:0,
-    w:270,
-    h:35,
-    r:100,
-    fill:0
+    x: 0,
+    y: 0,
+    w: 270,
+    h: 35,
+    r: 100,
+    fill: 0
 };
 
 let deadShadow = {
@@ -131,7 +135,7 @@ let red = {
     b: 23
 };
 
-let blue =  {
+let blue = {
     r: 117,
     g: 219,
     b: 244
@@ -151,13 +155,14 @@ function setup() {
 
 // draw()
 function draw() {
-    // Background color
-    bg.r = map(mouseY,0,width,10,50);
-    bg.g = map(mouseY,0,width,0,100);
-    bg.b = map(mouseY,0,width,50,255);
-    background(bg.r,bg.g,bg.b);
 
-    // Call functions 
+    // Background color
+    bg.r = map(mouseY, 0, width, 10, 50);
+    bg.g = map(mouseY, 0, width, 0, 100);
+    bg.b = map(mouseY, 0, width, 50, 255);
+    background(bg.r, bg.g, bg.b);
+
+    // Calling functions 
     createEnvironment();
     noStroke();
     createImposter();
@@ -170,26 +175,28 @@ function createEnvironment() {
     star.x = random(width);
     star.y = random(height);
     star.size = random(2, 10);
-    ellipse(mouseX,mouseY,star.size,star.size);
-    ellipse(star.x, star.y, star.size,star.size);
+    ellipse(mouseX, mouseY, star.size, star.size);
+    ellipse(star.x, star.y, star.size, star.size);
     //Window frame
     windowWall.y = 0;
     windowWall.w = width;
-    windowWall.h = height/1.3;
+    windowWall.h = height / 1.3;
     strokeWeight(10);
     stroke('lightgrey');
     noFill();
     rect(windowWall.x, windowWall.y, windowWall.w, windowWall.h);
 
+    // Clouds 
+
     // Floor
-    floor.y = height/1.75;
+    floor.y = height / 1.75;
     floor.w = width;
     fill('grey');
-    rect(floor.x,floor.y,floor.w,floor.h);
-}// end of function
+    rect(floor.x, floor.y, floor.w, floor.h);
+} // end of function
 
-// Imposter character ----------------------------------------------------------------
-function createImposter () {
+// Create imposter character ----------------------------------------------------------------
+function createImposter() {
 
     // Hat
     rectMode(CENTER);
@@ -199,12 +206,10 @@ function createImposter () {
     beginShape();
     vertex(body.x, body.y / 2);
     quadraticVertex(800, 250, 800, 200);
-    // quadraticVertex(930, 255, 900, 300);
     endShape(CLOSE)
-    
     rectMode(CENTER);
     rect(body.x, body.y / 1.75, 15, 100, 20);
-    
+
 
     // Body
     body.x = width / 2;
@@ -217,13 +222,12 @@ function createImposter () {
 
     // Shadow
     shadow.x = width / 2;
-    shadow.y = body.y *1.5;
-    fill(0,75);
-    ellipse(shadow.x, shadow.y, shadow.w,shadow.h);
+    shadow.y = body.y * 1.5;
+    fill(0, 75);
+    ellipse(shadow.x, shadow.y, shadow.w, shadow.h);
 
 
     // Backpack
-    backpack
     backpack.x = body.x / 1.14;
     backpack.y = body.y * 1.1;
     fill(red.r, red.g, red.b);
@@ -242,7 +246,7 @@ function createImposter () {
     // Body (lighten)
     rectMode(CORNER);
     red.r = 242,
-    red.g = 23;
+        red.g = 23;
     red.b = 23;
     fill(red.r, red.g, red.b);
     rect(body.x / 1.12, body.y / 1.5, body.w / 1.05, body.h / 1.05, body.r);
@@ -260,16 +264,16 @@ function createImposter () {
     // Face (lighten)
     face.x = body.x - 5;
     face.y = body.y / 1.2;
-    face.y = constrain(mouseY,face.y,face.y+25);
-    face.x = constrain(mouseX,face.x -15,face.x);
+    face.y = constrain(mouseY, face.y, face.y + 25);
+    face.x = constrain(mouseX, face.x - 15, face.x);
     fill(255);
     rect(face.x, face.y, face.w * 0.7, face.h * 0.5, face.r);
 
-}// end of function
+} // end of function
 
-// Dead body ----------------------------------------------------------------------------
+// Create dead body ----------------------------------------------------------------------------
 function createCorpse() {
-    
+
     // Leg (Top)
     deadLegs.x = deadBody.x * 1.12;
     deadLegs.y = deadBody.y * 1.06;
@@ -288,10 +292,10 @@ function createCorpse() {
     ellipse(deadShadow.x, deadShadow.y, deadShadow.w, deadShadow.h, deadShadow.r);
 
     // Body
-    deadBody.x = width/1.5;
-    deadBody.y = height/1.5;
+    deadBody.x = width / 1.5;
+    deadBody.y = height / 1.5;
     fill(teal.r, teal.g, teal.b);
-    rect(deadBody.x, deadBody.y, deadBody.w, deadBody.h,deadBody.r);
+    rect(deadBody.x, deadBody.y, deadBody.w, deadBody.h, deadBody.r);
 
     // Leg (Bottom)
     deadLegs.x = deadBody.x * 1.12;
@@ -302,22 +306,22 @@ function createCorpse() {
     rect(deadLegs.x, deadLegs.y, deadLegs.w, deadLegs.h, deadLegs.r);
 
     // Body (Darken)
-    fill(teal.r,teal.g/1.5,teal.b/1.5);
-    rect(deadBody.x, deadBody.y, deadBody.w/2, deadBody.h, deadBody.r);
+    fill(teal.r, teal.g / 1.5, teal.b / 1.5);
+    rect(deadBody.x, deadBody.y, deadBody.w / 2, deadBody.h, deadBody.r);
 
     // Bone (core)
-    bones.x = deadBody.x/1.05;
-    bones.y = deadBody.y*1.1;
+    bones.x = deadBody.x / 1.05;
+    bones.y = deadBody.y * 1.1;
     fill(255);
     rect(bones.x, bones.y, bones.w, bones.h, bones.r);
 
     // Bone (top)
-    bonesCircle.x = bones.x*1;
+    bonesCircle.x = bones.x * 1;
     bonesCircle.y = bones.y;
-    ellipse(bonesCircle.x,bonesCircle.y,bonesCircle.size);
+    ellipse(bonesCircle.x, bonesCircle.y, bonesCircle.size);
 
     //Bone (bottom)
     bonesCircle.y = bones.y * 1.07;
     ellipse(bonesCircle.x, bonesCircle.y, bonesCircle.size);
 
-}// end of function
+} // end of function
