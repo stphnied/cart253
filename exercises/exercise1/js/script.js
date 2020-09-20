@@ -32,6 +32,15 @@ let windowWall = {
     fill: 0
 }
 
+let sun = {
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    speed:2,
+    size:0,
+};
+
 let star = {
     x: 0,
     y: 0,
@@ -202,6 +211,34 @@ function createEnvironment() {
     ellipse(mouseX, mouseY, star.size, star.size);
     ellipse(star.x, star.y, star.size, star.size);
 
+    // Sunray 1
+    sun.w += sun.speed * 2;
+    sun.h += sun.speed * 2;
+    sun.size += sun.speed;
+    sun.speed++;
+    sun.size = constrain(sun.size, 0, width*2);
+    fill(200, 130, 10, 10);
+    ellipse(sun.x, sun.y, sun.size);
+
+    // Sun (shadow)
+    sun.x = 100;
+    sun.y = height/1.75;
+    sun.size = constrain(mouseY,400,550);
+    fill(200, 130, 10);
+    ellipse(sun.x, sun.y, sun.size, );
+    // Sun 
+    fill(250, 200, 0);
+    ellipse(sun.x, sun.y, sun.size - 30, sun.size - 10);
+
+
+
+    // Sunray 2
+    // sun.w += sun.speed * 20;
+    // sun.h += sun.speed * 20;
+    // sun.speed++;
+    // fill(200, 130, 10, 10);
+    // ellipse(sun.x, sun.y, sun.w, sun.h);
+
     // Cloud 01
     translate(cloud.x);
     fill(cloud.fill);
@@ -299,6 +336,10 @@ function createEnvironment() {
         cloud.x -= cloud.speed;
         cloud.speed += -1.5;
     }
+
+
+
+
     rectMode(CORNER);
     //Window frame
     windowWall.y = 0;
