@@ -37,8 +37,9 @@ let sun = {
     y: 0,
     w: 0,
     h: 0,
-    speed:2,
-    size:0,
+    speed: 2,
+    size: 0,
+    growth: 2
 };
 
 let star = {
@@ -48,11 +49,11 @@ let star = {
 };
 
 let cloud = {
-    x:0,
-    y:50,
-    w:60,
-    h:60,
-    fill:255,
+    x: 0,
+    y: 50,
+    w: 60,
+    h: 60,
+    fill: 255,
     speed: 100
 };
 
@@ -148,14 +149,14 @@ let deadShadow = {
 
 
 let warningSign = {
-    x:0,
-    y:0,
-    w:0,
-    h:0,
-    r:0,
-    fill:'red',
-    growth:0
-} 
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    r: 0,
+    fill: 'red',
+    growth: 0
+}
 
 // Colors
 let red = {
@@ -174,6 +175,13 @@ let teal = {
     r: 27,
     g: 255,
     b: 255
+};
+
+let yellow = {
+    r: 255,
+    g: 200,
+    b: 70,
+    add: 20
 };
 
 let changeDirection;
@@ -211,33 +219,24 @@ function createEnvironment() {
     ellipse(mouseX, mouseY, star.size, star.size);
     ellipse(star.x, star.y, star.size, star.size);
 
-    // Sunray 1
-    sun.w += sun.speed * 2;
-    sun.h += sun.speed * 2;
+    // Sunray
+    sun.w += sun.speed * sun.growth;
+    sun.h += sun.speed * sun.growth;
     sun.size += sun.speed;
-    sun.speed++;
-    sun.size = constrain(sun.size, 0, width*2);
-    fill(200, 130, 10, 10);
+    sun.speed += sun.growth;
+    sun.size = constrain(sun.size, 0, width/2.5);
+    fill(yellow.r, yellow.g, yellow.b, 10);
     ellipse(sun.x, sun.y, sun.size);
 
     // Sun (shadow)
     sun.x = 100;
-    sun.y = height/1.75;
-    sun.size = constrain(mouseY,400,550);
-    fill(200, 130, 10);
-    ellipse(sun.x, sun.y, sun.size, );
+    sun.y = height / 1.75;
+    sun.size = constrain(mouseY * sun.growth, 400, 550);
+    fill(yellow.r + yellow.add, yellow.g + yellow.add, yellow.b + yellow.add);
+    ellipse(sun.x, sun.y, sun.size);
     // Sun 
-    fill(250, 200, 0);
+    fill(yellow.r, yellow.g, yellow.b);
     ellipse(sun.x, sun.y, sun.size - 30, sun.size - 10);
-
-
-
-    // Sunray 2
-    // sun.w += sun.speed * 20;
-    // sun.h += sun.speed * 20;
-    // sun.speed++;
-    // fill(200, 130, 10, 10);
-    // ellipse(sun.x, sun.y, sun.w, sun.h);
 
     // Cloud 01
     translate(cloud.x);
@@ -276,7 +275,6 @@ function createEnvironment() {
     cloud.x += cloud.speed;
     cloud.y = 70;
     ellipse(cloud.x, cloud.y, cloud.w, cloud.h); //Bottom left
-
 
     // Cloud 02
     cloud.x = 310;
@@ -319,10 +317,9 @@ function createEnvironment() {
 
     // If it passes the width changeDirection = true
     // Else = false
-    if(cloud.x > width + 100){
+    if (cloud.x > width + 100) {
         changeDirection = true;
-    } 
-    else if (cloud.x <=0 ) {
+    } else if (cloud.x <= 0) {
         changeDirection = false;
     }
 
@@ -331,14 +328,10 @@ function createEnvironment() {
     if (changeDirection == false) {
         // cloud.x += cloud.speed;
         cloud.speed += 2;
-    } 
-    else if (changeDirection == true) {
+    } else if (changeDirection == true) {
         cloud.x -= cloud.speed;
         cloud.speed += -1.5;
     }
-
-
-
 
     rectMode(CORNER);
     //Window frame
@@ -364,18 +357,18 @@ function createImposter() {
     // Hat
     rectMode(CENTER);
     fill('green');
-    beginShape();     // Leaves
+    beginShape(); // Leaves
     vertex(body.x, body.y / 2);
     quadraticVertex(800, 250, 800, 200);
     endShape(CLOSE)
     rectMode(CENTER);
-    rect(body.x, body.y / 1.75, 15, 100, 20);     // Stem
+    rect(body.x, body.y / 1.75, 15, 100, 20); // Stem
 
 
     // Body
     body.x = width / 2;
     body.y = height / 2;
-    red.r = 167,
+    red.r = 167;
     red.g = 10;
     red.b = 10;
     fill(red.r, red.g, red.b);
@@ -405,7 +398,7 @@ function createImposter() {
 
     // Body (lighten)
     rectMode(CORNER);
-    red.r = 242,
+    red.r = 242;
     red.g = 23;
     red.b = 23;
     fill(red.r, red.g, red.b);
@@ -488,20 +481,21 @@ function createCorpse() {
 
 } // end of function
 
-function warningSymbol () {
+function warningSymbol() {
 
     // ! (Top)
     rectMode(CENTER);
     warningSign.x = deadBody.x * 1.13;
     warningSign.y = deadBody.y / 1.2;
+
     warningSign.w = 20 + warningSign.growth;
     warningSign.h = 70 + warningSign.growth;
     warningSign.growth++;
     warningSign.growth = constrain(warningSign.growth, 0, 20);
+
     warningSign.r = 30;
     fill(warningSign.fill);
     rect(warningSign.x, warningSign.y, warningSign.w, warningSign.h, warningSign.r);
-
 
     // ! (dot)
     warningSign.y = warningSign.y * 1.2;
@@ -509,5 +503,4 @@ function warningSymbol () {
     warningSign.w = 15 + warningSign.growth;
     warningSign.growth++;
     rect(warningSign.x, warningSign.y, warningSign.w, warningSign.h, warningSign.r);
-
 }
