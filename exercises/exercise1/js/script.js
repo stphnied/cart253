@@ -184,9 +184,9 @@ let yellow = {
     add: 20
 };
 
-let changeDirection;
+let changeDirection;  //Bool allowing to change the cloud direction
 
-// Setting the canvas dimension -----------------------------------------------------------------
+// Setting up the canvas  -----------------------------------------------------------------
 function setup() {
     createCanvas(windowWidth, windowHeight);
     changeDirection = false;
@@ -481,6 +481,7 @@ function createCorpse() {
 
 } // end of function
 
+// Draw the warning symbol 
 function warningSymbol() {
 
     // ! (Top)
