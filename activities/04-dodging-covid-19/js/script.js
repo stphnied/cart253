@@ -24,10 +24,11 @@ let user = {
     fill:255
 };
 
-
+let numStatic = 5000;
 // Description of setup() goes here.
 function setup() {
     createCanvas(windowWidth,windowHeight);
+    noCursor();
 
     covid19.y = random(0,height);
     covid19.vx = covid19.speed;
@@ -41,7 +42,7 @@ function draw() {
     noStroke();
     
     // Static bg
-    for(let i =0; i<100 ;i++) {
+    for(let i =0; i<numStatic ;i++) {
         let x = random(0,width); 
         let y = random(0,height);
         stroke(255);
