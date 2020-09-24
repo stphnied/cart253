@@ -12,7 +12,7 @@ let bg = {
     r: 17,
     g: 32,
     b: 87
-}
+};
 
 let floor = {
     x: 0,
@@ -21,7 +21,7 @@ let floor = {
     h: 400,
     r: 0,
     fill: 0
-}
+};
 
 let windowWall = {
     x: 0,
@@ -30,7 +30,7 @@ let windowWall = {
     h: 300,
     r: 0,
     fill: 0
-}
+};
 
 let sun = {
     x: 0,
@@ -40,13 +40,13 @@ let sun = {
     speed: 2,
     size: 0,
     growth: 2
-}
+};
 
 let star = {
     x: 0,
     y: 0,
     size: 1
-}
+};
 
 let cloud = {
     x: 0,
@@ -55,7 +55,7 @@ let cloud = {
     h: 60,
     fill: 255,
     speed: 100
-}
+};
 
 // Imposter objects
 let body = {
@@ -65,7 +65,7 @@ let body = {
     h: 310,
     r: 80,
     fill: 0
-}
+};
 
 let legs = {
     x: 0,
@@ -74,7 +74,7 @@ let legs = {
     h: 235,
     r: 30,
     fill: 0
-}
+};
 
 let face = {
     x: 0,
@@ -83,7 +83,7 @@ let face = {
     h: 70,
     r: 30,
     fill: 0
-}
+};
 
 let backpack = {
     x: 0,
@@ -92,7 +92,7 @@ let backpack = {
     h: 200,
     r: 30,
     fill: 0
-}
+};
 
 
 // Corpse objects
@@ -103,7 +103,7 @@ let deadBody = {
     h: 175,
     r: 80,
     fill: 0
-}
+};
 
 let deadLegs = {
     x: 0,
@@ -112,7 +112,7 @@ let deadLegs = {
     h: 235,
     r: 30,
     fill: 0
-}
+};
 
 let bones = {
     x: 0,
@@ -121,13 +121,13 @@ let bones = {
     h: 50,
     r: 20,
     fill: 255
-}
+};
 
 let bonesCircle = {
     x: 500,
     y: 250,
     size: 50
-}
+};
 
 let shadow = {
     x: 0,
@@ -136,7 +136,7 @@ let shadow = {
     h: 35,
     r: 100,
     fill: 0
-}
+};
 
 let deadShadow = {
     x: 0,
@@ -145,7 +145,7 @@ let deadShadow = {
     h: 20,
     r: 100,
     fill: 0
-}
+};
 
 
 let warningSign = {
@@ -156,33 +156,33 @@ let warningSign = {
     r: 0,
     fill: 'red',
     growth: 0
-}
+};
 
 // Colors
 let red = {
     r: 242,
     g: 23,
     b: 23
-}
+};
 
 let blue = {
     r: 117,
     g: 219,
     b: 244
-}
+};
 
 let teal = {
     r: 27,
     g: 255,
     b: 255
-}
+};
 
 let yellow = {
     r: 255,
     g: 200,
     b: 70,
     add: 20
-}
+};
 
 let changeDirection;  //Bool allowing to change the cloud direction
 
