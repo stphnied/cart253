@@ -25,10 +25,10 @@ let circle06 = {
     size: 100,
     vx: 0,
     vy: 0,
-    ax:0,
-    ay:0,
+    ax: 0,
+    ay: 0,
     acceleration: 0.1,
-    maxSpeed : 5
+    maxSpeed: 5
 }
 
 let displayCircle = false;
@@ -41,17 +41,28 @@ let caterpillar = {
 
 let angle = 0;
 let rectScale = 1;
+let imgClown;
+let clown = {
+    x:250,
+    y:250,
+    size:100,
+    image:undefined
+};
+
+function preload() {
+    imgClown = loadImage('assets/images/clown.png');
+    clown.image = loadImage('assets/images/clown.png');
+}
+
+
 
 // setup()
-//
-// Description of setup() goes here.
 function setup() {
     createCanvas(500, 500);
+
 }
 
 // draw()
-//
-// Description of draw() goes here.
 function draw() {
     background(bg.r, bg.g, bg.b);
     noStroke();
@@ -61,8 +72,10 @@ function draw() {
     // video04();
     // video05();
     // video06();
-    video07();
-
+    // video07();
+    // Video 08 = activity04
+    // video09();
+    video10();
 
 }
 
@@ -183,35 +196,49 @@ function video07() {
 
     // Translation
     push();
-    fill(255,0,0);
-    stroke(0,255,255);
+    fill(255, 0, 0);
+    stroke(0, 255, 255);
     strokeWeight(10);
-    rect(100,100,100,100);
+    rect(100, 100, 100, 100);
     pop();
 
     push();
     translate(200, 100);
-    fill(0,255,0);
-    rect(100,100,100,100);
+    fill(0, 255, 0);
+    rect(100, 100, 100, 100);
     pop();
 
     push();
-    translate(0,200);
-    fill(0,0,255);
-    rect(100,100,100,100);
+    translate(0, 200);
+    fill(0, 0, 255);
+    rect(100, 100, 100, 100);
     pop();
 
 
     // Rotation
     push();
-    fill(255,100,100);
+    fill(255, 100, 100);
     rectMode(CENTER);
-    translate(width/2,height/2);
+    translate(width / 2, height / 2);
     rotate(angle); //radians or PI/4
     scale(rectScale);
-    rect(0,0,100,100);
+    rect(0, 0, 100, 100);
     pop();
-    
+
     angle += 0.02;
     rectScale += 0.01;
+}
+
+// Image
+function video09() {
+    image(imgClown, mouseX, mouseY, 50, 50);
+}
+
+
+// Time
+function video10() {
+    clown.x = mouseX;
+    clown.y = mouseY;
+    imageMode(CENTER);
+    image(clown.image, clown.x, clown.y, clown.size, clown.size);
 }
