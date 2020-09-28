@@ -72,9 +72,9 @@ function draw() {
     // video04();
     // video05();
     // video06();
-    // video07();
+    video07();
     // Video 08 = activity04
-    // video09();
+    video09();
     video10();
 
 }
