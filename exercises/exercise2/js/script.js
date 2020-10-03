@@ -9,7 +9,7 @@ let covid19 = {
     size: 200,
     vx: 0,
     vy: 0,
-    speed: 5,
+    speed: 7,
     fill: {
         r: 255,
         g: 20,
@@ -30,10 +30,7 @@ let circleBg = {
         r: 255,
         g: 20,
         b: 10
-    },
-    xAngle:0,
-    yAngle:0,
-    time:0
+    }
 };
 
 let user = {
@@ -86,7 +83,8 @@ function draw() {
         noFill();
         ellipse(x, y,15,15);
     };
- 
+    
+    // Calling the functions
     controlUser();
     createcovid19();
    
@@ -138,6 +136,7 @@ function createcovid19() {
     covid19.x += covid19.vx;
     covid19.y += covid19.vy;
 
+    // Returns the covid19.x to 0 
     if (covid19.x > width) {
         covid19.x = 0;
         covid19.y = random(0, height);
@@ -147,11 +146,13 @@ function createcovid19() {
         covid19.fill.b = random(0, 255);
         covid19.fill.a = 100;
     }
+    // Decreased it's visibility when it reaches the 2/3 of the width
     else if (covid19.x > width / 2 && covid19.x < 2 * width / 2) {
         covid19.fill.a = 10;
         noStroke();
     }
-    covid19.fill.a--;
+
+    covid19.fill.a--; //Slowly turn down the alpha
     fill(covid19.fill.r, covid19.fill.g, covid19.fill.b,covid19.fill.a);
     ellipse(covid19.x, covid19.y, covid19.size, covid19.size);
     pop();
