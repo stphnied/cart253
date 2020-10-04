@@ -64,7 +64,7 @@ function draw() {
 
 // Check if gone offscreen
 function sadEnding() {
-    if (circle1.x < 0 || circle1.x > width || circle1.y < 0 || circle1.y > height) {
+    if (isOffScreen(circle1) || isOffScreen(circle2)) {
         state = `sadness`;
     }
 }
@@ -108,6 +108,14 @@ function move() {
     // circle2.y = constrain(circle2.y, 0, height);
 }
 
+function isOffScreen(circle) {
+    if (circle1.x < 0 || circle1.x > width || circle1.y < 0 || circle1.y > height) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 // ---------------------------------- State functions
 
 function title() {
