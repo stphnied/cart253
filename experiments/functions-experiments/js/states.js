@@ -12,7 +12,7 @@ let state = `title`; //Possible state : title,animation,ending
 function setup() {
     createCanvas(500, 500);
     textSize(32);
-    circle3.vs = circle3.speed;
+    circle3.vx = circle3.speed;
 }
 
 function draw() {
