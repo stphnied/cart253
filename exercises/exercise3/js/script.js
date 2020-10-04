@@ -11,8 +11,8 @@ let user = {
     y:0,
     vx:0,
     vy:0,
-    size:100,
-    speed:2
+    size:55,
+    speed:5
 };
 
 let lover = {
@@ -20,18 +20,9 @@ let lover = {
     y: 0,
     vx: 0,
     vy: 0,
-    size:100,
+    size:50,
     speed: 2
 };
-
-let chaser = {
-    x: 0,
-    y: 0,
-    vx: 0,
-    vy: 0,
-    size:100,
-    speed: 2
-}
 
 let state = `title`;
 // setup()
@@ -43,21 +34,47 @@ function setup() {
 // setup for the user
 function setupUser() {
     user.x = width/2;
-    user.y = height/2;
+    user.y = height;
+
+    lover.x = width/2;
+    lover.y = 45;
 }
 
 // draw()
 function draw() {
     background(255,155,200);
+    display();
 
+}
+
+// Displaying the elements of the game
+function display() {
     // user
     push();
     fill('coral');
-    ellipse(user.x,user.y,user.size);
+    ellipse(user.x, user.y, user.size);
     pop();
     move();
 
-  
+    // Lover
+    push();
+    lover.x += lover.speed;
+    if (lover.x > width) {
+        lover.speed = -lover.speed;
+    } else if (lover.x <= 0) {
+        lover.speed = -lover.speed;
+    }
+    fill('yellow');
+    ellipse(lover.x,lover.y,lover.size);
+    pop();
+
+    // Blockers (x,y,size,nbcircle,linespace)
+    // on top
+    blockers(0, 100, 20, 5,100);
+    blockers(width/2,100, 20,6,100)
+    // on bottom
+    blockers(0, height/1.2, 20, 5, 100);
+    blockers(width / 2, height/1.2, 20, 6, 100)
 }
 
 //  PLAYER FUNCTIONS -----------------------------------
@@ -71,6 +88,19 @@ function move() {
   } else if (keyIsDown(RIGHT_ARROW)) {
       user.x += user.speed;
   }
+}
+
+
+
+//  BLOCKERS FUNCTIONS -----------------------------------
+function blockers(x,y,size,nbCircles,lineSpace){
+    for (let i = 0; i < nbCircles; i++) {
+        noStroke();
+        ellipseMode(CENTER);
+        fill(255);
+        ellipse(x, y, size);
+        x += lineSpace;
+    }
 }
 
 // GAME SCENE FUNCTON --------------------------------------
@@ -89,6 +119,13 @@ function sadEnding() {
 
 }
 
+function isOffScreen(circle) {
+    if (user.x < 0 || user.x > width || lover.y < 0 || lover.y > height) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // STATES FUNCTON --------------------------------------
 

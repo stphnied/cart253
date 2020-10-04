@@ -66,7 +66,7 @@ function setup() {
 function draw() {
     background(bg.r, bg.g, bg.b);
     noStroke();
-    // video01();
+    video01();
     // video02();
     // video03();
     // video04();
