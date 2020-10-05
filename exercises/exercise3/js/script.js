@@ -72,6 +72,8 @@ function setupUser() {
 // draw()
 function draw() {
     background('#CEC2FF');
+
+    // States
     switch(state) {
         case `title` :
             title();
@@ -84,6 +86,9 @@ function draw() {
             break;
         case `sadEnding`:
             sadness();
+            break;
+        case `runEnding`:
+            runningAway();
             break;
     }
 }
@@ -105,7 +110,7 @@ function display() {
 
     // fences (x,y,size,nbcircle,linespace)
     // on top
-    fences(0, 100, 20, 5, 100);
+    let f1 = fences(0, 100, 20, 5, 100);
     fences(width / 2, 100, 20, 6, 100)
     // on bottom
     fences(0, height / 1.2, 20, 5, 100);
@@ -185,6 +190,7 @@ function startGame() {
     display();
     sadEnding();
     happyEnding();
+    runEnding();
 }
 
 function happyEnding() {
@@ -197,7 +203,8 @@ function happyEnding() {
 function sadEnding() {
     let d1 = dist(user.x, user.y, circle1.x, circle1.y);
     let d2 = dist(user.x, user.y, circle2.x, circle2.y);
-    let d3 = dist(user.x, user.y, circle3.x, circle2.y);
+    let d3 = dist(user.x, user.y, circle3.x, circle3.y);
+    // let d4 = dist(user.x, user.y);
 
     if (d1 < user.size / 2 + circle1.size / 2
         || d2 < user.size / 2 + circle2.size / 2
@@ -206,11 +213,9 @@ function sadEnding() {
     }
 }
 
-function isOffScreen(circle) {
-    if (user.x < 0 || user.x > width || lover.y < 0 || lover.y > height) {
-        return true;
-    } else {
-        return false;
+function runEnding() {
+    if (user.x < 0 || user.x > width || user.y < 0 || user.y > height) {
+        state = `runEnding`;
     }
 }
 
