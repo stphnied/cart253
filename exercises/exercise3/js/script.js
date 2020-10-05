@@ -110,11 +110,12 @@ function display() {
 
     // fences (x,y,size,nbcircle,linespace)
     // on top
-    let f1 = fences(0, 100, 20, 5, 100);
+    fences(0, 100, 20, 5, 100);
     fences(width / 2, 100, 20, 6, 100)
     // on bottom
     fences(0, height / 1.2, 20, 5, 100);
     fences(width / 2, height / 1.2, 20, 6, 100)
+    
     passerby();
 }
 
@@ -147,6 +148,15 @@ function fences(x,y,size,nbCircles,lineSpace){
         ellipseMode(CENTER);
         fill('#6E2594');
         ellipse(x, y, size);
+        x += lineSpace;
+    }
+}
+function checkFencesOverlap(x, y, size, nbCircles, lineSpace) {
+    for (let i = 0; i < nbCircles; i++) {
+        let d = dist(user.x,user.y,x,y);
+        if(d < user.size/2 +size/2){
+            state = `sadEnding`;
+        }
         x += lineSpace;
     }
 }
@@ -187,10 +197,17 @@ function passerby() {
 // GAME SCENE FUNCTON --------------------------------------
 function startGame() {
     move();
+
+    checkFencesOverlap(0, 100, 20, 5, 100);
+    checkFencesOverlap(width / 2, 100, 20, 6, 100);
+    checkFencesOverlap(0, height / 1.2, 20, 5, 100);
+    checkFencesOverlap(width / 2, height / 1.2, 20, 6, 100);
+
     display();
     sadEnding();
     happyEnding();
     runEnding();
+
 }
 
 function happyEnding() {
@@ -204,7 +221,6 @@ function sadEnding() {
     let d1 = dist(user.x, user.y, circle1.x, circle1.y);
     let d2 = dist(user.x, user.y, circle2.x, circle2.y);
     let d3 = dist(user.x, user.y, circle3.x, circle3.y);
-    // let d4 = dist(user.x, user.y);
 
     if (d1 < user.size / 2 + circle1.size / 2
         || d2 < user.size / 2 + circle2.size / 2
@@ -224,12 +240,13 @@ function title() {
     push();
     textStyle(BOLD);
     fill(255)
-    text(`REUNITE WITH YOUR LOVER WHILE ESCAPING THE PASSERBY`,width/5,height/2.2);
+    text(`REUNITE WITH YOUR LOVER WHILE ESCAPING THE PASSERS-BY`,width/5,height/2.2);
     pop();
 
     push()
     fill('#6E2594');
-    text(`Press any keys to start the game! Move with your arrow keys`,width/4,height/2);
+    text(`
+    Press any keys to start the game! Move with your arrow keys`,width/5,height/2);
     pop();
     textSize(24);
 } 
@@ -241,12 +258,12 @@ function love() {
 
 function sadness() {
     fill('#E84C4C');
-    text(`It wasn't meant to be!`, width / 2, height / 2);
+    text(`It wasn't meant to be! Refresh to change your fate! `, width / 4, height / 2);
 }
 
 function runningAway() {
     fill('#E84C4C');
-    text(`Woa woa woa! Don't run away from your destiny! Retry.`,width/4,height/2);
+    text(`Woa woa woa! Don't run away from your destiny! Refresh to retry.`,width/4,height/2);
 }
 
 // MOUSE FUNCTIONS --------------------------------------
