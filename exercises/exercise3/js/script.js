@@ -221,9 +221,17 @@ function runEnding() {
 
 // STATES FUNCTON --------------------------------------
 function title() {
-    text(`Love,actually`,width/2,height/2);
-    text(`REUNITE WITH YOUR LOVER WHILE ESCAPING THE PASSERBY`,width/2.2,height/2.2);
-    text(`Press any keys to start the game! Move with your arrow keys`,width/2,height/1.5);
+    push();
+    textStyle(BOLD);
+    fill(255)
+    text(`REUNITE WITH YOUR LOVER WHILE ESCAPING THE PASSERBY`,width/5,height/2.2);
+    pop();
+
+    push()
+    fill('#6E2594');
+    text(`Press any keys to start the game! Move with your arrow keys`,width/4,height/2);
+    pop();
+    textSize(24);
 } 
 
 function love() {
@@ -232,11 +240,13 @@ function love() {
 }
 
 function sadness() {
+    fill('#E84C4C');
     text(`It wasn't meant to be!`, width / 2, height / 2);
 }
 
 function runningAway() {
-    text(`Woa woa woa! Don't run away from your destiny! Retry.`,width/2,height/2);
+    fill('#E84C4C');
+    text(`Woa woa woa! Don't run away from your destiny! Retry.`,width/4,height/2);
 }
 
 // MOUSE FUNCTIONS --------------------------------------
