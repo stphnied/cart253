@@ -1,11 +1,12 @@
 /**************************************************
-Project 01 
+Project 01 : DINO SMT SMT
 Stephanie Dang
 
-It's the end of the world! SAVE YOUR FRIENDS!
+It's the end of the world! SAVE YOUR FRIENDS AND ESCAPE!
 **************************************************/
 
 "use  strict";
+let state = `title`;
 
 // Images
 let imgBg;
@@ -75,8 +76,8 @@ let cave = {
     y: 0,
     size: 100,
     img: undefined,
-
-}
+    bool : false
+};
 
 // Preloading the images
 function preload() {
@@ -131,11 +132,21 @@ function setup() {
 // Draw function
 function draw() {
     background(imgBg);
-    createCave()
-    move();
-    createFriends();
-    acquiringFriends();
-    createMeteor();
+     // States
+    switch(state) {
+        case `title` :
+            title();
+            break;
+        case `startGame` :
+            startGame();
+            break;
+        case `happyEnd` :
+            happyEnd();
+            break;
+        case `sadEnd`:
+            sadEnd();
+            break;
+    }
 }
 
 // PLAYER MOVEMENT FUNCTION
@@ -158,31 +169,41 @@ function move() {
 
 // Function that creates the dino friends
 function createFriends() {
-image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
-if(dinoGreen.bool) {
-    image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
-    if(dinoBlue.bool){
-        image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+    image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
+
+    // If the user got his green friend, blue appear
+    if(dinoGreen.bool) {
+        image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+
+        // if got the blue friend, red appear
+        if(dinoBlue.bool){
+            image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+        }
+
+        // Create cave!
+        if(dinoRed.bool) {
+            cave.bool =  true;
+        }
     }
 }
 
-}
-
-// Function that make the dino friends follow the user
+// Function that allows the user to collide with friends
 function acquiringFriends() {
+    // Distance between the user and his dino friends
     let d1 = dist(user.x, user.y, dinoGreen.x, dinoGreen.y);
     let d2 = dist(user.x, user.y, dinoBlue.x, dinoBlue.y);
     let d3 = dist(user.x, user.y, dinoRed.x, dinoRed.y);
 
+    // Touching Green dino
     if(d1 < user.size / 2 + dinoGreen.size / 2) {
-        // Green dino
         controlFriends();
         dinoGreen.bool = true;
-        // Display Blue dino 
+
+        // Touching Blue Dino
         if(d2 < user.size / 2 + dinoBlue.size / 2) {
         dinoBlue.bool = true;
-
         }
+        // Touching Red Dino
         if(dinoBlue.bool) {
             if(d3 < user.size / 2 + dinoRed.size / 2) {
                 dinoRed.bool = true;
@@ -191,7 +212,7 @@ function acquiringFriends() {
     }
 }
 
-
+// Function that allows the dino friends to follow the user
 function controlFriends() {
     if (keyIsDown(LEFT_ARROW)) {
         // DINO GREEN
@@ -229,13 +250,18 @@ function controlFriends() {
     }
 }
 
-
 // Function that creates the escaping route (cave)
 function createCave() {
-    image(cave.img, cave.x, cave.y, cave.size, cave.size);
+    if(cave.bool) {
+        image(cave.img, cave.x, cave.y, cave.size, cave.size);
+        let d = dist(user.x,user.y,cave.x,cave.y)
+        if( d < user.size/3 + cave.size/3) {
+            state = `happyEnd`;
+        }
+    }
 }
 
-// METEOR MOVEMENT ------------------------------------------
+// METEOR MOVEMENT
 function createMeteor() {
     meteor.y += meteor.speed;
     if (meteor.y > height) {
@@ -244,4 +270,16 @@ function createMeteor() {
         meteor.speed = random(4, 15);
     }
     image(meteor.img, meteor.x, meteor.y, meteor.size, meteor.size);
+
+    let d = dist(user.x,user.y,meteor.x,meteor.y)
+    if( d < user.size/2 + meteor.size/2) {
+        state = `sadEnd`;
+    }
+}
+
+// Key Functions
+ function keyPressed() {
+    if (state === `title`) {
+        state = `startGame`;
+    }
 }
