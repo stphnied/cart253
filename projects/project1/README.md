@@ -1,3 +1,10 @@
-# Template p5 project
+# Project 01 :
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+https://stphnied.github.io/cart253/projects/project1/
+
+
+
+<!-- Credits -->
+Clouds : LateNightCoffe on itch.io
+Bg : Sam on itch.io
+Dino : Arks on itch.io
