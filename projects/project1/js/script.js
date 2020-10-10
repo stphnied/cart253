@@ -8,10 +8,10 @@ It's the end of the world! SAVE YOUR FRIENDS AND ESCAPE!
 "use  strict";
 
 let state = `title`;
-
+let myFont;
 // Sounds
 let bgMusic;
-let friendSFX;
+let winSFX;
 let loseSFX;
 
 // Images
@@ -87,6 +87,9 @@ let cave = {
 
 // Preloading the images
 function preload() {
+    // Font
+    myFont = loadFont(`assets/fonts/4bit.TTF`);
+
     // Sounds
     bgMusic = loadSound(`assets/sounds/musicBg.mp3`);
     winSFX = loadSound(`assets/sounds/win.mp3`);
@@ -149,6 +152,9 @@ function draw() {
     switch(state) {
         case `title` :
             title();
+            break;
+        case `instruction`:
+            instruction();
             break;
         case `startGame` :
             startGame();
@@ -288,7 +294,7 @@ function createMeteor() {
 
     // If meteor touches user, end game
     let d = dist(user.x,user.y,meteor.x,meteor.y)
-    if( d < user.size/2 + meteor.size/2) {
+    if( d < user.size/3 + meteor.size/3) {
         state = `sadEnd`;
     }
 
@@ -317,8 +323,14 @@ function createMeteor() {
 // Key Functions
 function keyPressed() {
     if (state === `title`) {
+        state = `instruction`;
+    }
+    else if(state ===`instruction`) {
         state = `startGame`;
     }
+
+    else if(state ===`sadEnd` || state === `happyEnd`)
+    state = `title`;
 }
 
 function playMusic() {
@@ -326,3 +338,4 @@ function playMusic() {
     bgMusic.loop();
   }
 }
+
