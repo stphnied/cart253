@@ -38,7 +38,8 @@ let dinoGreen = {
     size: 40,
     speed: 4,
     img: undefined,
-    imgL: undefined
+    imgL: undefined,
+    bool: false
 };
 
 let dinoBlue = {
@@ -56,7 +57,9 @@ let dinoRed = {
     y: 0,
     size: 40,
     speed: 4,
-    img: undefined
+    img: undefined,
+    imgL: undefined,
+    bool: false
 };
 
 let meteor = {
@@ -91,6 +94,7 @@ function preload() {
     dinoBlue.imgL = loadImage(`assets/images/dinoBlue2.png`);
 
     dinoRed.img = loadImage(`assets/images/dinoRed.png`);
+    dinoRed.imgL = loadImage(`assets/images/dinoRed2.png`);
 
     meteor.img = loadImage(`assets/images/meteor.png`);
     cave.img = loadImage(`assets/images/cave.png`);
@@ -110,9 +114,11 @@ function setup() {
     // dinoGreen setup
     dinoGreen.x = 100;
     dinoGreen.y = height/1.04;
+
     // dinoBlue setup
     dinoBlue.x = 600;
     dinoBlue.y = height/1.04;
+
     // dinoRed setup
     dinoRed.x = 100;
     dinoRed.y = height/1.04;
@@ -130,9 +136,6 @@ function draw() {
     createFriends();
     acquiringFriends();
     createMeteor();
-    controlFriends();
-
-
 }
 
 // PLAYER MOVEMENT ------------------------------------------
@@ -156,6 +159,8 @@ function move() {
 // RESCUING -------------------------------------------
 function createFriends() {
 image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
+image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
 
 }
 
@@ -165,20 +170,20 @@ function acquiringFriends() {
     let d3 = dist(user.x, user.y, dinoRed.x, dinoRed.y);
 
     if(d1 < user.size / 2 + dinoGreen.size / 2) {
-        // Green friend
+        // Green dino
         controlFriends();
-        
+        dinoGreen.bool = true;
         // Display Blue dino 
-        image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
-    }
-
-    if(d2 < user.size / 2 + dinoBlue.size / 2) {
+        if(d2 < user.size / 2 + dinoBlue.size / 2) {
         dinoBlue.bool = true;
-        // // Blue friend
-        // dinoBlue.x = user.x -45;
-        // image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
-    }
 
+        }
+        if(dinoBlue.bool) {
+            if(d3 < user.size / 2 + dinoRed.size / 2) {
+                dinoRed.bool = true;
+            }
+        }  
+    }
 }
 
 
@@ -193,6 +198,12 @@ function controlFriends() {
             dinoBlue.x = dinoGreen.x + 45;
             image(dinoBlue.imgL, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
         }
+
+        // DINO RED
+        if(dinoRed.bool) {
+            dinoRed.x = dinoBlue.x + 45;
+            image(dinoRed.imgL, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+        }
     }
     else if (keyIsDown(RIGHT_ARROW)) {
         // DINO GREEN
@@ -204,21 +215,14 @@ function controlFriends() {
             dinoBlue.x = dinoGreen.x - 45;
             image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
         }
+
+        // DINO RED
+        if(dinoRed.bool) {
+            dinoRed.x = dinoBlue.x - 45;
+            image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+        }
     }
 }
-
-
-function placeholderfriend() {
-
-    // Display Red dino
-    image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
-    if(d3 < user.size / 2 + dinoRed.size / 2) {
-    // Red friend
-    dinoRed.x = dinoBlue.x - 45;
-    image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
-    }
-}
-
 
 
 // Cave appears only when the user collects all his friends
