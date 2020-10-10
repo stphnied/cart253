@@ -78,8 +78,8 @@ let cave = {
 
 }
 
+// Preloading the images
 function preload() {
-
     imgBg = loadImage('assets/images/gameBg.png');
     imgCloud1.img = loadImage('assets/images/cloud1.png');
     imgCloud2.img = loadImage('assets/images/cloud2.png');
@@ -138,7 +138,7 @@ function draw() {
     createMeteor();
 }
 
-// PLAYER MOVEMENT ------------------------------------------
+// PLAYER MOVEMENT FUNCTION
 function move() {
     // User
     if (keyIsDown(LEFT_ARROW)) {
@@ -156,14 +156,19 @@ function move() {
 
 }
 
-// RESCUING -------------------------------------------
+// Function that creates the dino friends
 function createFriends() {
 image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
-image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
-image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+if(dinoGreen.bool) {
+    image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+    if(dinoBlue.bool){
+        image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+    }
+}
 
 }
 
+// Function that make the dino friends follow the user
 function acquiringFriends() {
     let d1 = dist(user.x, user.y, dinoGreen.x, dinoGreen.y);
     let d2 = dist(user.x, user.y, dinoBlue.x, dinoBlue.y);
@@ -225,7 +230,7 @@ function controlFriends() {
 }
 
 
-// Cave appears only when the user collects all his friends
+// Function that creates the escaping route (cave)
 function createCave() {
     image(cave.img, cave.x, cave.y, cave.size, cave.size);
 }
