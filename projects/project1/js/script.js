@@ -37,7 +37,8 @@ let dinoGreen = {
     y: 0,
     size: 40,
     speed: 4,
-    img: undefined
+    img: undefined,
+    imgL: undefined
 };
 
 let dinoBlue = {
@@ -45,7 +46,9 @@ let dinoBlue = {
     y: 0,
     size: 40,
     speed: 4,
-    img: undefined
+    img: undefined,
+    imgL: undefined,
+    bool: false
 };
 
 let dinoRed = {
@@ -68,7 +71,8 @@ let cave = {
     x: 0,
     y: 0,
     size: 100,
-    img: undefined
+    img: undefined,
+
 }
 
 function preload() {
@@ -81,7 +85,11 @@ function preload() {
     user.imgL = loadImage(`assets/images/dinoYellow2.png`);
 
     dinoGreen.img = loadImage(`assets/images/dinoGreen.png`);
+    dinoGreen.imgL = loadImage(`assets/images/dinoGreen2.png`);
+
     dinoBlue.img = loadImage(`assets/images/dinoBlue.png`);
+    dinoBlue.imgL = loadImage(`assets/images/dinoBlue2.png`);
+
     dinoRed.img = loadImage(`assets/images/dinoRed.png`);
 
     meteor.img = loadImage(`assets/images/meteor.png`);
@@ -103,7 +111,7 @@ function setup() {
     dinoGreen.x = 100;
     dinoGreen.y = height/1.04;
     // dinoBlue setup
-    dinoBlue.x = 100;
+    dinoBlue.x = 600;
     dinoBlue.y = height/1.04;
     // dinoRed setup
     dinoRed.x = 100;
@@ -119,8 +127,11 @@ function draw() {
     background(imgBg);
     createCave()
     move();
-    createMeteor();
     createFriends();
+    acquiringFriends();
+    createMeteor();
+    controlFriends();
+
 
 }
 
@@ -129,35 +140,90 @@ function move() {
     // User
     if (keyIsDown(LEFT_ARROW)) {
         user.x += -user.speed;
+        image(user.imgL, user.x, user.y, user.size, user.size);
+        
     } else if (keyIsDown(RIGHT_ARROW)) {
         user.x += user.speed;
+        image(user.img, user.x, user.y, user.size, user.size);
+    }
+    else {
+        image(user.img, user.x, user.y, user.size, user.size);
     }
     user.x = constrain(user.x, 0, width / 1.05);
-    image(user.img, user.x, user.y, user.size, user.size);
+
 }
 
 // RESCUING -------------------------------------------
 function createFriends() {
+image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
 
-    // Green friend
-    dinoGreen.x = user.x - 40;
-    image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
-    // Blue friend
-    dinoBlue.x = dinoGreen.x -45;
-    image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
-    // Red friend
-    dinoRed.x = dinoBlue.x - 45;
-    image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+}
+
+function acquiringFriends() {
+    let d1 = dist(user.x, user.y, dinoGreen.x, dinoGreen.y);
+    let d2 = dist(user.x, user.y, dinoBlue.x, dinoBlue.y);
+    let d3 = dist(user.x, user.y, dinoRed.x, dinoRed.y);
+
+    if(d1 < user.size / 2 + dinoGreen.size / 2) {
+        // Green friend
+        controlFriends();
+        
+        // Display Blue dino 
+        image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+    }
+
+    if(d2 < user.size / 2 + dinoBlue.size / 2) {
+        dinoBlue.bool = true;
+        // // Blue friend
+        // dinoBlue.x = user.x -45;
+        // image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+    }
 
 }
 
 
+function controlFriends() {
+    if (keyIsDown(LEFT_ARROW)) {
+        // DINO GREEN
+        dinoGreen.x = user.x + 40;
+        image(dinoGreen.imgL, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
+
+        // DINO BLUE
+        if(dinoBlue.bool) {
+            dinoBlue.x = dinoGreen.x + 45;
+            image(dinoBlue.imgL, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+        }
+    }
+    else if (keyIsDown(RIGHT_ARROW)) {
+        // DINO GREEN
+        dinoGreen.x = user.x - 40;
+        image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
+
+        // DINO BLUE
+        if(dinoBlue.bool) {
+            dinoBlue.x = dinoGreen.x - 45;
+            image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
+        }
+    }
+}
 
 
-// Opening cave
+function placeholderfriend() {
+
+    // Display Red dino
+    image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+    if(d3 < user.size / 2 + dinoRed.size / 2) {
+    // Red friend
+    dinoRed.x = dinoBlue.x - 45;
+    image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
+    }
+}
+
+
+
+// Cave appears only when the user collects all his friends
 function createCave() {
     image(cave.img, cave.x, cave.y, cave.size, cave.size);
-
 }
 
 // METEOR MOVEMENT ------------------------------------------
