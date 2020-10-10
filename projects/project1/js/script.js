@@ -6,7 +6,13 @@ It's the end of the world! SAVE YOUR FRIENDS AND ESCAPE!
 **************************************************/
 
 "use  strict";
+
 let state = `title`;
+
+// Sounds
+let bgMusic;
+let friendSFX;
+let loseSFX;
 
 // Images
 let imgBg;
@@ -81,6 +87,12 @@ let cave = {
 
 // Preloading the images
 function preload() {
+    // Sounds
+    bgMusic = loadSound(`assets/sounds/musicBg.mp3`);
+    winSFX = loadSound(`assets/sounds/win.mp3`);
+    loseSFX = loadSound(`assets/sounds/end.mp3`);
+
+    // Images
     imgBg = loadImage('assets/images/gameBg.png');
     imgCloud1.img = loadImage('assets/images/cloud1.png');
     imgCloud2.img = loadImage('assets/images/cloud2.png');
@@ -104,6 +116,7 @@ function preload() {
 // Setting up the game
 function setup() {
     createCanvas(1000, windowHeight);
+    playMusic();
     // User setup
     user.x = width / 2;
     user.y = height / 1.05;
@@ -113,15 +126,15 @@ function setup() {
     meteor.y = 0;
 
     // dinoGreen setup
-    dinoGreen.x = 100;
+    dinoGreen.x = random(10,200);
     dinoGreen.y = height/1.04;
 
     // dinoBlue setup
-    dinoBlue.x = 600;
+    dinoBlue.x = random(600,1000);
     dinoBlue.y = height/1.04;
 
     // dinoRed setup
-    dinoRed.x = 100;
+    dinoRed.x = random(0,300);
     dinoRed.y = height/1.04;
 
     // cave setup
@@ -256,6 +269,7 @@ function createCave() {
         image(cave.img, cave.x, cave.y, cave.size, cave.size);
         let d = dist(user.x,user.y,cave.x,cave.y)
         if( d < user.size/3 + cave.size/3) {
+            winSFX.play();
             state = `happyEnd`;
         }
     }
@@ -271,15 +285,44 @@ function createMeteor() {
     }
     image(meteor.img, meteor.x, meteor.y, meteor.size, meteor.size);
 
+
+    // If meteor touches user, end game
     let d = dist(user.x,user.y,meteor.x,meteor.y)
     if( d < user.size/2 + meteor.size/2) {
         state = `sadEnd`;
     }
+
+    // If meteor touches dino friends, end game
+    if(dinoBlue.bool||dinoGreen.bool||dinoRed.bool){
+        let d1 = dist(meteor.x, meteor.y, dinoGreen.x, dinoGreen.y);
+        let d2 = dist(meteor.x, meteor.y, dinoBlue.x, dinoBlue.y);
+        let d3 = dist(meteor.x, meteor.y, dinoRed.x, dinoRed.y);
+
+        if(d1 < dinoGreen.size/2 + meteor.size/2) {
+            loseSFX.play();
+            state = `sadEnd`;
+            
+        }
+        if (d2 < dinoBlue.size/2 + meteor.size/2) {
+            loseSFX.play();
+            state = `sadEnd`;
+        }
+        if(d3 < dinoRed.size/2 + meteor.size/2) {
+            loseSFX.play();
+            state = `sadEnd`;
+        }
+    }
 }
 
 // Key Functions
- function keyPressed() {
+function keyPressed() {
     if (state === `title`) {
         state = `startGame`;
     }
+}
+
+function playMusic() {
+    if (!bgMusic.isPlaying()) {
+    bgMusic.loop();
+  }
 }
