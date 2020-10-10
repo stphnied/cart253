@@ -1,10 +1,11 @@
 # Project 01 :
 
 https://stphnied.github.io/cart253/projects/project1/
-
-
-
 <!-- Credits -->
-Clouds : LateNightCoffe on itch.io
-Bg : Sam on itch.io
-Dino : Arks on itch.io
+## Asset credits
+- Background : Sam on itch.io
+- Dinosaurs : Arks on itch.io
+- Cave : Pam on pixelartmaker.com
+
+## SFX credits
+- Music : Happy 8Bit by Tristan Lohengrin
