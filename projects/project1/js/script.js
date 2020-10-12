@@ -1,5 +1,5 @@
 /**************************************************
-Project 01 : DINO SMT SMT
+Project 01 : DINOTUBBIES
 Stephanie Dang
 
 It's the end of the world! SAVE YOUR FRIENDS AND ESCAPE!
@@ -115,7 +115,7 @@ function setup() {
     meteor.y = 0;
 
     // dinoGreen setup
-    dinoGreen.x = random(10, 200);
+    dinoGreen.x = random(50, 200);
     dinoGreen.y = height / 1.04;
 
     // dinoBlue setup
@@ -131,9 +131,9 @@ function setup() {
     cave.y = height / 1.1;
 
     // sound settings
-    bgMusic.setVolume(0.5);
-    loseSFX.setVolume(0.7);
-    winSFX.setVolume(0.7);
+    bgMusic.setVolume(0.3);
+    loseSFX.setVolume(0.4);
+    winSFX.setVolume(0.4);
 }
 
 // Draw function
@@ -265,7 +265,14 @@ function controlFriends() {
 // Function that creates the escaping route (cave)
 function createCave() {
     if (cave.bool) {
+        push();
+        textSize(24);
+        commonTextStyle();
+        strokeWeight(2);
+        fill(`FFFFFF`);
         text(`GET TO SAFETY!`, width / 2, height / 2);
+        pop();
+
         image(cave.img, cave.x, cave.y, cave.size, cave.size);
         let d = dist(user.x, user.y, cave.x, cave.y)
         if (d < user.size / 3 + cave.size / 3) {
@@ -275,7 +282,7 @@ function createCave() {
     }
 }
 
-// METEOR MOVEMENT
+// Meteor movement
 function createMeteor() {
     meteor.y += meteor.speed;
     if (meteor.y > height) {
@@ -313,7 +320,7 @@ function createMeteor() {
             loseSFX.play();
             state = `sadEnd`;
         }
-        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d4 < dinoRed.size / 3 + meteor.size / 2) {
+        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d4 < dinoRed.size / 4 + meteor.size / 4) {
             loseSFX.play();
             state = `sadEnd`;
         }
@@ -330,6 +337,7 @@ function keyPressed() {
     }
 }
 
+// Play music in loop
 function playMusic() {
     if (!bgMusic.isPlaying()) {
         bgMusic.loop();
