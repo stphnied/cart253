@@ -1,4 +1,4 @@
-# Project 01 :
+# Project 01 : DINOTUBBIES 
 
 https://stphnied.github.io/cart253/projects/project1/
 <!-- Credits -->

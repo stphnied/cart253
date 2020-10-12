@@ -106,7 +106,6 @@ function preload() {
 // Setting up the game
 function setup() {
     createCanvas(1000, windowHeight);
-    playMusic();
     // User setup
     user.x = width / 2;
     user.y = height / 1.05;
@@ -120,7 +119,7 @@ function setup() {
     dinoGreen.y = height / 1.04;
 
     // dinoBlue setup
-    dinoBlue.x = random(600, 1000);
+    dinoBlue.x = random(600, 900);
     dinoBlue.y = height / 1.04;
 
     // dinoRed setup
@@ -130,11 +129,17 @@ function setup() {
     // cave setup
     cave.x = width / 1.1;
     cave.y = height / 1.1;
+
+    // sound settings
+    bgMusic.setVolume(0.5);
+    loseSFX.setVolume(0.7);
+    winSFX.setVolume(0.7);
 }
 
 // Draw function
 function draw() {
     background(imgBg);
+    playMusic();
     // States
     switch (state) {
         case `title`:
@@ -308,7 +313,7 @@ function createMeteor() {
             loseSFX.play();
             state = `sadEnd`;
         }
-        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d4 < dinoRed.size / 2 + meteor.size / 2) {
+        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d4 < dinoRed.size / 3 + meteor.size / 2) {
             loseSFX.play();
             state = `sadEnd`;
         }
@@ -323,10 +328,6 @@ function keyPressed() {
     else if (state === `instruction`) {
         state = `startGame`;
     }
-
-    // else if(state ===`sadEnd`|| state === `happyEnd`){
-    //     state = `title`;
-    // }
 }
 
 function playMusic() {

@@ -55,6 +55,6 @@ function sadEnd() {
 function restart() {
     fill(`FFFFFF`);
     textSize(24);
-    text(`Press any keys to restart`,width/2,height/1.75);
+    text(`Press F5 to restart`,width/2,height/1.75);
 }
 
