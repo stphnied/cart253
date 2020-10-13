@@ -290,10 +290,10 @@ function createMeteor() {
         meteor.speed = random(4, 15);
         randomX = random(0,800);
     }
+
     imageMode(CENTER);
     image(meteor.img, meteor.x, meteor.y, meteor.size, meteor.size);
     image(meteor.img, randomX, meteor.y * 1.2, meteor.size, meteor.size );
-
 
     // If meteors touch user, end game
     let d = dist(user.x, user.y, meteor.x, meteor.y)
@@ -315,7 +315,7 @@ function createMeteor() {
         }
     }
 
-    else if(dinoBlue.visible) {
+    if(dinoBlue.visible) {
         let d2 = dist(meteor.x, meteor.y, dinoBlue.x, dinoBlue.y);
         let d5 = dist(randomX, meteor.y * 1.2, dinoBlue.x, dinoBlue.y);
         if (d2 < dinoBlue.size / 2 + meteor.size / 2 || d5 < dinoBlue.size / 2 + meteor.size / 2) {
@@ -325,7 +325,7 @@ function createMeteor() {
         }
     }
 
-    else if(dinoRed.visible) {
+    if(dinoRed.visible) {
         let d3 = dist(meteor.x, meteor.y, dinoRed.x, dinoRed.y);
         let d6 = dist(randomX, meteor.y * 1.2, dinoRed.x, dinoRed.y);
         if (d3 < dinoRed.size / 2 + meteor.size / 2 || d6 < dinoRed.size / 2 + meteor.size / 2) {
