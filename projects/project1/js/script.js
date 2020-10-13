@@ -132,8 +132,8 @@ function setup() {
 
     // sound settings
     bgMusic.setVolume(0.3);
-    loseSFX.setVolume(0.4);
-    winSFX.setVolume(0.4);
+    loseSFX.setVolume(0.5);
+    winSFX.setVolume(0.5);
 }
 
 // Draw function
