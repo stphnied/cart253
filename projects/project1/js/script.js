@@ -35,7 +35,7 @@ let dinoGreen = {
     speed: 4,
     img: undefined,
     imgL: undefined,
-    bool: false
+    visible: false
 };
 
 let dinoBlue = {
@@ -45,7 +45,7 @@ let dinoBlue = {
     speed: 4,
     img: undefined,
     imgL: undefined,
-    bool: false
+    visible: false
 };
 
 let dinoRed = {
@@ -55,7 +55,7 @@ let dinoRed = {
     speed: 4,
     img: undefined,
     imgL: undefined,
-    bool: false
+    visible: false
 };
 
 let meteor = {
@@ -71,7 +71,7 @@ let cave = {
     y: 0,
     size: 100,
     img: undefined,
-    bool: false
+    visible: false
 };
 
 // Preloading the images
@@ -183,17 +183,17 @@ function createFriends() {
     image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
 
     // If the user got his green friend, blue appear
-    if (dinoGreen.bool) {
+    if (dinoGreen.visible) {
         image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
 
         // if got the blue friend, red appear
-        if (dinoBlue.bool) {
+        if (dinoBlue.visible) {
             image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
         }
 
         // Create cave!
-        if (dinoRed.bool) {
-            cave.bool = true;
+        if (dinoRed.visible) {
+            cave.visible = true;
         }
     }
 }
@@ -208,16 +208,16 @@ function acquiringFriends() {
     // Touching Green dino
     if (d1 < user.size / 2 + dinoGreen.size / 2) {
         controlFriends();
-        dinoGreen.bool = true;
+        dinoGreen.visible = true;
 
         // Touching Blue Dino
         if (d2 < user.size / 2 + dinoBlue.size / 2) {
-            dinoBlue.bool = true;
+            dinoBlue.visible = true;
         }
         // Touching Red Dino
-        if (dinoBlue.bool) {
+        if (dinoBlue.visible) {
             if (d3 < user.size / 2 + dinoRed.size / 2) {
-                dinoRed.bool = true;
+                dinoRed.visible = true;
             }
         }
     }
@@ -231,13 +231,13 @@ function controlFriends() {
         image(dinoGreen.imgL, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
 
         // DINO BLUE
-        if (dinoBlue.bool) {
+        if (dinoBlue.visible) {
             dinoBlue.x = dinoGreen.x + 45;
             image(dinoBlue.imgL, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
         }
 
         // DINO RED
-        if (dinoRed.bool) {
+        if (dinoRed.visible) {
             dinoRed.x = dinoBlue.x + 45;
             image(dinoRed.imgL, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
         }
@@ -248,13 +248,13 @@ function controlFriends() {
         image(dinoGreen.img, dinoGreen.x, dinoGreen.y, dinoGreen.size, dinoGreen.size);
 
         // DINO BLUE
-        if (dinoBlue.bool) {
+        if (dinoBlue.visible) {
             dinoBlue.x = dinoGreen.x - 45;
             image(dinoBlue.img, dinoBlue.x, dinoBlue.y, dinoBlue.size, dinoBlue.size);
         }
 
         // DINO RED
-        if (dinoRed.bool) {
+        if (dinoRed.visible) {
             dinoRed.x = dinoBlue.x - 45;
             image(dinoRed.img, dinoRed.x, dinoRed.y, dinoRed.size, dinoRed.size);
         }
@@ -263,7 +263,7 @@ function controlFriends() {
 
 // Function that creates the escaping route (cave)
 function createCave() {
-    if (cave.bool) {
+    if (cave.visible) {
         push();
         textSize(24);
         commonTextStyle();
@@ -290,38 +290,48 @@ function createMeteor() {
         meteor.speed = random(4, 15);
         randomX = random(0,800);
     }
+    imageMode(CENTER);
     image(meteor.img, meteor.x, meteor.y, meteor.size, meteor.size);
+    image(meteor.img, randomX, meteor.y * 1.2, meteor.size, meteor.size );
 
-    image(meteor.img, randomX, meteor.y * 1.2, meteor.size / 1.1, meteor.size / 1.1);
 
-
-    // If meteor touches user, end game
+    // If meteors touch user, end game
     let d = dist(user.x, user.y, meteor.x, meteor.y)
     let dr = dist(user.x, user.y, randomX, meteor.y)
     if (d < user.size / 3 + meteor.size / 3 || dr < user.size / 3 + meteor.size / 3) {
+        loseSFX.play();
         state = `sadEnd`;
+        print('user dead');
     }
 
-    // If meteor touches dino friends, end game
-    if (dinoBlue.bool || dinoGreen.bool || dinoRed.bool) {
+    // If meteors touch dino friends, end game
+    if(dinoGreen.visible) {
         let d1 = dist(meteor.x, meteor.y, dinoGreen.x, dinoGreen.y);
-        let d2 = dist(meteor.x, meteor.y, dinoBlue.x, dinoBlue.y);
-        let d3 = dist(meteor.x, meteor.y, dinoRed.x, dinoRed.y);
-        let d4 = dist(randomX, meteor.y, dinoGreen.x, dinoGreen.y);
-        let d5 = dist(randomX, meteor.y, dinoBlue.x, dinoBlue.y);
-        let d6 = dist(randomX, meteor.y, dinoRed.x, dinoRed.y);
-
+        let d4 = dist(randomX, meteor.y * 1.2, dinoGreen.x, dinoGreen.y);
         if (d1 < dinoGreen.size / 2 + meteor.size / 2 || d4 < dinoGreen.size / 2 + meteor.size / 2) {
             loseSFX.play();
             state = `sadEnd`;
+            print('green dead');
         }
+    }
+
+    else if(dinoBlue.visible) {
+        let d2 = dist(meteor.x, meteor.y, dinoBlue.x, dinoBlue.y);
+        let d5 = dist(randomX, meteor.y * 1.2, dinoBlue.x, dinoBlue.y);
         if (d2 < dinoBlue.size / 2 + meteor.size / 2 || d5 < dinoBlue.size / 2 + meteor.size / 2) {
             loseSFX.play();
             state = `sadEnd`;
+            print('blue dead');
         }
-        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d4 < dinoRed.size / 4 + meteor.size / 4) {
+    }
+
+    else if(dinoRed.visible) {
+        let d3 = dist(meteor.x, meteor.y, dinoRed.x, dinoRed.y);
+        let d6 = dist(randomX, meteor.y * 1.2, dinoRed.x, dinoRed.y);
+        if (d3 < dinoRed.size / 2 + meteor.size / 2 || d6 < dinoRed.size / 2 + meteor.size / 2) {
             loseSFX.play();
             state = `sadEnd`;
+            print('red dead');
         }
     }
 }
