@@ -132,14 +132,13 @@ function setup() {
 
     // sound settings
     bgMusic.setVolume(0.3);
-    loseSFX.setVolume(0.5);
-    winSFX.setVolume(0.5);
+    loseSFX.setVolume(0.4);
+    winSFX.setVolume(0.4);
 }
 
 // Draw function
 function draw() {
     background(imgBg);
-    playMusic();
     // States
     switch (state) {
         case `title`:
@@ -334,6 +333,7 @@ function keyPressed() {
     } 
     else if (state === `instruction`) {
         state = `startGame`;
+        playMusic();
     }
 }
 
