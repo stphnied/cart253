@@ -11,15 +11,8 @@ let circle = {
 
 let rates = [1.5, 2, 1, 2.25, 3];
 
-let images = [];
-let displayImg;
 
 function preload() {
-
-    for (let i = 0; i < 2; i++) {
-        let clownImg = images[i] = loadImage(`assets/images/clown-${i}.png`);
-        images.push(clownImg);
-    }
     barkSFX = loadSound(`assets/sounds/bark.wav`);
 }
 
@@ -29,7 +22,6 @@ function setup() {
 
 function draw() {
     background(0);
-    displayImg = random(images);
     circle.x = mouseX;
     circle.y = mouseY;
 
