@@ -19,7 +19,7 @@ function setup() {
     createCanvas(600, 600);
 
     food1 = createFood(50, 300);
-    food2 = createFood(100, -300);
+    food2 = createFood(150, 300);
     food3 = createFood(250, 300);
     food4 = createFood(350, 300);
     food5 = createFood(450, 300);
