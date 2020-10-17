@@ -45,8 +45,8 @@ function setup() {
     }
 
     // Shark start position
-    shark.x = width / 2;
-    shark.y = 375;
+    shark.x = width/4;
+    shark.y = height/4;
 }
 
 // draw()
