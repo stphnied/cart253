@@ -107,7 +107,7 @@ function moveCandy(candy) {
     candy.x = candy.x + candy.vx;
     candy.y = candy.y + candy.vy;
 
-    // Constrain the candy to the canvas
+    // Constrain the candy within canvas
     candy.x = constrain(candy.x, 0, width);
     candy.y = constrain(candy.y, 0, height);
 
@@ -165,9 +165,10 @@ function moveShark() {
 }
 
 function checkShark() {
-    let d1 = dist(user.x, user.y, shark.x, shark.y);
+    let d1 = dist(mouseX, mouseY, shark.x, shark.y);
     if (d1 < user.size / 2 + shark.size / 2) {
         state = `badEnd`;
+        console.log(`touchie`);
     }
 }
 
@@ -213,7 +214,7 @@ function goodEnd() {
 function badEnd() {
     push();
     fill(`#1F6941`);
-    writeText(`I GUESS THE WITCH GOT THEIR TREAT`, width / 2, height / 2, 64)
+    writeText(`I GUESS THE WITCH GOT THEIR TREAT`, width / 2, height / 2, 32)
     pop();
 }
 
