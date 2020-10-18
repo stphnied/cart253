@@ -9,7 +9,7 @@ Stephanie Dang
 let shark = {
     x: 0,
     y: 0,
-    size: 400,
+    size: 200,
     vx: 0,
     vy: 0,
     speed: 4,
@@ -23,14 +23,18 @@ let user = {
     img: undefined
 };
 let school = [];
-let schoolSize = 10;
+let schoolSize = 15;
 let state = `intro`;
+let myFont;
 
 // preloading assets
 function preload() {
+    // Images
     shark.img = loadImage(`assets/images/sharkie.png`);
     user.img = loadImage(`assets/images/user.png`);
     candyImg = loadImage(`assets/images/candy.png`);
+    // Font
+    myFont = loadFont(`assets/font/Sofia.OTF`);
 }
 
 // ------------------------------------- FUNCTIONS
@@ -164,11 +168,11 @@ function moveShark() {
     shark.y = constrain(shark.y, 0, 600);
 }
 
+// If touches shark, user dies
 function checkShark() {
     let d1 = dist(mouseX, mouseY, shark.x, shark.y);
-    if (d1 < user.size / 2 + shark.size / 2) {
+    if (d1 < user.size / 2 + shark.size / 4) {
         state = `badEnd`;
-        console.log(`touchie`);
     }
 }
 
@@ -176,7 +180,7 @@ function checkShark() {
 function intro() {
     push();
     fill(`#ff6500`);
-    writeText(`TRICK OR TREAT`, width / 2, height / 2, 64)
+    writeText(`THE AGE OF A SPOOPY AQUARIUM`, width / 2, height / 2, 64)
     pop();
 
     push();
@@ -215,12 +219,15 @@ function badEnd() {
     push();
     fill(`#1F6941`);
     writeText(`I GUESS THE WITCH GOT THEIR TREAT`, width / 2, height / 2, 32)
+    fill(0, 102, 153, 90);
+    writeText(`REFRESH PAGE TO RETRY`,width/2,height/1.75,24)
     pop();
 }
 
 // -------------------------------------TEXT FUNCTIONS
 function writeText(myText, x, y, size) {
     textAlign(CENTER, CENTER);
+    textFont(myFont);
     textSize(size);
     text(myText, x, y);
 }
