@@ -34,7 +34,7 @@ function preload() {
     user.img = loadImage(`assets/images/user.png`);
     candyImg = loadImage(`assets/images/candy.png`);
     // Font
-    myFont = loadFont(`assets/font/Sofia.OTF`);
+    myFont = loadFont(`assets/font/Sofia.otf`);
 }
 
 // ------------------------------------- FUNCTIONS
