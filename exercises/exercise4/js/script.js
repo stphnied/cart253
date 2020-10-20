@@ -108,8 +108,8 @@ function moveCandy(candy) {
     }
 
     // Move the candy
-    candy.x = candy.x + candy.vx;
-    candy.y = candy.y + candy.vy;
+    candy.x += candy.vx;
+    candy.y += candy.vy;
 
     // Constrain the candy within canvas
     candy.x = constrain(candy.x, 0, width);
@@ -160,8 +160,8 @@ function moveShark() {
     }
 
     // Move the shark
-    shark.x = shark.x + shark.vx;
-    shark.y = shark.y + shark.vy;
+    shark.x += shark.vx;
+    shark.y += shark.vy;
 
     // Constrain the shark within the canvas
     shark.x = constrain(shark.x, 0, width);
