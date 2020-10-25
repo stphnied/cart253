@@ -13,6 +13,12 @@ let garden = {
     flowers: [],
     // How many flowers in the garden
     numFlowers: 20,
+
+    // An array to store the bees
+    bees: [],
+
+    // How many bees we want 
+    numBees: 10,
     // The color of the grass (background)
     grassColor: {
         r: 120,
@@ -43,6 +49,12 @@ function setup() {
         // Add the flower to the array of flowers
         garden.flowers.push(flower);
     }
+
+    // Creates the bees 
+    for (let i = 0; i < garden.numBees; i++) {
+        let bee = new Bee(random(0, width), random(0, height));
+        garden.bees.push(bee);
+    }
 }
 
 // draw()
@@ -54,11 +66,32 @@ function draw() {
     // Loop through all the flowers in the array and display them
     for (let i = 0; i < garden.flowers.length; i++) {
         let flower = garden.flowers[i];
-        flower.display();
+        if(flower.alive) {
+            flower.shrink();
+            flower.display();
+        }
+    }
+
+    for(let i = 0; i< garden.bees.length; i++) {
+        let bee = garden.bees[i];
+        if(bee.alive) {
+            bee.shrink();
+            bee.move();
+            bee.display();
+        }
+
+        for(let k = 0; k < garden.bees.length ;k++) {
+            let flower = garden.flowers[k];
+            if(flower.alive) {
+                bee.tryToPollinate(flower);                
+            }
+
+        }
     }
 }
 
 function mousePressed() {
+    // Makes the flower grows
     for (let i = 0; i < garden.flowers.length; i++) {
         let flower = garden.flowers[i];
         flower.mousePressed();
