@@ -3,19 +3,18 @@
 function intro() {
     // background(200);
     push();
-    fill(`#ff6500`);
-    displayText(`APPLE PICKING WITH A TWIST!`, width / 2, height / 2, 64)
+    textStyle(BOLD);
+    displayText(`APPLE PICKING WITH A TWIST!`, width / 2, height / 2, 64);
     pop();
 
     push();
-    fill(255);
-    displayText(`It's a wonderful day to go apple picking today`, width / 2, height / 1.75, 24)
+    displayText(`It's a wonderful day to go apple picking today, but be careful... Every batch has a bad apple!`, width / 2, height / 1.75, 24);
     pop();
 
     push();
-    fill(255);
-    displayText('PRESS TO START', width / 2, height / 1.3, 32);
-    displayText(`Use your mouse and move RIGHT TO LEFT to collect the apples`, width / 2, height / 1.2, 24);
+    displayText('PRESS TO START', width / 2, height / 1.4, 32);
+    displayText(`move RIGHT or LEFT with your mouse to collect the apples`, width / 2, height / 1.3, 24);
+    displayText(`press SPACEBAR to slow down the bad one`, width / 2, height / 1.2, 16);
     pop();
 }
 
@@ -26,11 +25,11 @@ function gameplay() {
     // Displays the apple counting from the array
     for (let i = 0; i < apples.length; i++) {
         let apple = apples[i];
-
         if (apple.active) {
             apple.gravity(gravityForce);
             apple.move();
             apple.catch(basket);
+            apple.catchBad(basket);
             apple.display();
 
             //Count number of apple caught 
@@ -38,29 +37,33 @@ function gameplay() {
                 apple.active = false;
                 apple.caught = true;
                 caughtApples++;
-                print(caughtApples);
             }
+        }
+    }
+
+    // Just a small distraction
+    for(let i = 0; i< distraction.bees.length; i++) {
+    let bee = distraction.bees[i];
+        if(bee.alive) {
+            bee.move();
+            bee.display();
         }
     }
 
     //Increase the timer's count by one frame
     gameOverTimer++;
-    gameCounter -= 0.01;
+
+    // Reducing displayed timer count
+    gameCounter -= 0.0166;
+    // Display the visual timer
     displayText(int(gameCounter),width/2,height/2,60);
+
     // The game over in 10s
-    if (gameOverTimer >= gameLength) {
-        gameOver();
+    if (caughtApples != numApples && gameOverTimer >= gameLength) {
+        state = 'lose';
     }
-}
-
-// Control game over state
-function gameOver() {
-    if(caughtApples == numApples) {
+    else if(caughtApples == numApples) {
         state = `win`;
-    }
-
-    else {
-        state = `lose`;
     }
 }
 

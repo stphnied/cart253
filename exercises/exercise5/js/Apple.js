@@ -1,17 +1,18 @@
 class Apple {
-    constructor(x, y, appleColor) {
+    constructor(x, y, appleColor,size) {
         this.x = x;
         this.y = y;
-        this.size = 50;
+        this.size = size;
         this.vel = 0;
         this.vx = 0;
         this.vy = 0;
         this.ax = 0;
         this.ay = 0;
-        this.maxSpeed = 10;
+        this.maxSpeed = 15;
         this.appleColor = appleColor;
         this.active = true;
         this.caught = false;
+        this.badCaught = false;
     }
 
     //Apple fall gravity
@@ -43,8 +44,8 @@ class Apple {
         // if the bottom edge is past the top of paddle
         if (this.x > basket.x - basket.width / 2 &&
             this.x < basket.x + basket.width / 2 &&
-            this.y + this.size / 2 > basket.y - basket.height / 2 &&
-            this.y - this.size / 2 < basket.y + basket.height / 2) {
+            this.y + badApple.size / 2 > basket.y - basket.height / 2 &&
+            this.y - badApple.size / 2 < basket.y + basket.height / 2) {
             this.caught = true;
         }
 
@@ -57,6 +58,17 @@ class Apple {
         // Bounces off the wall
         if (this.x >= width || this.x <= 0) {
             this.vx = -this.vx;
+        }
+    }
+
+    // If we catch the bad apple it's game over
+    catchBad(basket) {
+        if (badApple.x > basket.x - basket.width / 2 &&
+            badApple.x < basket.x + basket.width / 2 &&
+            badApple.y + badApple.size / 2 > basket.y - basket.height / 2 &&
+            badApple.y - badApple.size / 2 < basket.y + basket.height / 2) {
+            state = 'lose';
+            this.badCaught = true;
         }
     }
 

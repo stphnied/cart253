@@ -10,16 +10,21 @@ Apple picking but with a twist... they bounce back!
 let gravityForce = 0.0025;  // Gravity
 let basket;                 // Catching apple
 
+let distraction = {
+    bees : [],              //Array to generate bees
+    numBees : 3            //Number of bees generating
+};
+
 let apples = [];            // Array to generate apples
 let numApples = 0;          // Number of apple generating
 let caughtApples = 0;       // Counter for apple  caught
+let badApple;               //Bad apple
+
 let imgBg;                  // Image background for gameplay
 
 let gameOverTimer = 0;      // Timer to count the number of frames
-let gameLength = 60*15;     // Game duration (15sec)
-let gameCounter = 10;
-
-
+let gameLength = 60*20;     // Game duration (20sec)
+let gameCounter = 20;       // visual timer
 
 let state = 'intro';        //States of game
 
@@ -33,10 +38,11 @@ function preload() {
 // Calling function that create apples
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    basket = new Basket(300, 75);
+    numApples = int(random(10, 55));
 
-    basket = new Basket(200, 75);
-    numApples = random(25, 75);
-    createApples();
+    addApples();
+    addBees();
 }
 
 // Drawing the background
@@ -68,15 +74,28 @@ function mousePressed() {
     }
 }
 
+// Change the speed to the bad apple
+function keyPressed() {
+    if(state == 'gameplay') {
+         if (keyCode === 32) {
+            badApple.maxSpeed = random(0,15) ;
+         }
+
+    }
+}
+
 // Display all text format
 function displayText(myText, x, y, size) {
+    fill(255);
     textAlign(CENTER, CENTER);
     textSize(size);
     text(myText, x, y);
 }
 
-// Creating apples
-function createApples() {
+// Adding apples
+function addApples() {
+
+    // Good apples
     for (let i = 0; i < numApples; i++) {
         let appleColor = {
             r: random(200, 255),
@@ -85,7 +104,27 @@ function createApples() {
         }
         let x = random(0, width);
         let y = random(-100, -500);
-        let apple = new Apple(x, y, appleColor);
+        let apple = new Apple(x, y, appleColor,random(40,100));
         apples.push(apple);
+    }
+
+    // bad apple
+    let badAppleColor = {
+        r: 0,
+        g: 255,
+        b: 50
+    }
+    let x2 = random(0,width);
+    let y2 = random(-100,-500);
+    badApple = new Apple(x2,y2,badAppleColor,random(40,100));
+    apples.push(badApple);
+}
+
+// Adding bees
+function addBees() {
+    // Creates the bees 
+    for (let i = 0; i < distraction.numBees; i++) {
+        let bee = new Bee(random(0, width), random(0, 200));
+        distraction.bees.push(bee);
     }
 }
