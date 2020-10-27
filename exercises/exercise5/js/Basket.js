@@ -1,4 +1,4 @@
-class Paddle {
+class Basket {
     constructor(w,h) {
         this.width = w;
         this.height = h;
@@ -12,8 +12,9 @@ class Paddle {
 
     display() {
         push();
-        fill('pink');
-        stroke(255);
+        fill('#ffa500');
+        stroke('#ff6500');
+        strokeWeight(5);
         rectMode(CENTER);
         rect(this.x,this.y,this.width,this.height);
         pop();
