@@ -6,13 +6,9 @@ Stephanie Dang
 
 traffic simulation
 **************************************************/
-
-let cars = [];
+let vehicules = [];
 let numCars = 10;
-
-let motorcycles = [];
 let numMotor = 10;
-
 
 // setup()
 function setup() {
@@ -21,7 +17,7 @@ function setup() {
         let x = random(0,width);
         let y = random(0,height);
         let car = new Car(x,y);
-        cars.push(car);
+        vehicules.push(car);
 
     }
 
@@ -29,8 +25,7 @@ function setup() {
         let x = random(0,width);
         let y = random(0,height);
         let motorcycle = new Motorcycle(x,y);
-        motorcycles.push(motorcycle);
-        
+        vehicules.push(motorcycle);
     }
 }
 
@@ -38,18 +33,10 @@ function setup() {
 function draw() {
     background(0);
 
-    for(let i = 0; i<cars.length; i++) {
-        let car = cars[i];
-        car.move();
-        car.wrap();
-        car.display();
-    }
-
-
-    for(let i = 0; i<motorcycles.length; i++) {
-        let motorcycle = motorcycles[i];
-        motorcycle.move();
-        motorcycle.wrap();
-        motorcycle.display();
+    for(let i =0; i < vehicules.length; i++) {
+        let vehicule = vehicules[i];
+        vehicule.move();
+        vehicule.wrap();
+        vehicule.display();
     }
 }
