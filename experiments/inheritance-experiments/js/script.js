@@ -9,6 +9,7 @@ traffic simulation
 let vehicules = [];
 let numCars = 10;
 let numMotor = 10;
+let numSportsCar = 3;
 
 // setup()
 function setup() {
@@ -18,6 +19,14 @@ function setup() {
         let y = random(0,height);
         let car = new Car(x,y);
         vehicules.push(car);
+
+    }
+
+    for(let i =0; i<numSportsCar; i++) {
+        let x = random(0,width);
+        let y = random(0,height);
+        let sportsCar = new SportsCar(x,y);
+        vehicules.push(sportsCar);
 
     }
 
