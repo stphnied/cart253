@@ -70,12 +70,12 @@ function gameplay() {
 // If player collects all apples
 function win() {
     fill(255);
-    displayText(`YOU WON!`,width/2,height/2,48);
+    displayText(`YOU WON! Press enter to restart`,width/2,height/2,48);
 }
 
 // If overtime
 function lose(){
     fill(255);
-    displayText(`YOU LOSE!`,width/2,height/2,48);
+    displayText(`YOU LOSE! Press enter to restart`,width/2,height/2,48);
 }
 

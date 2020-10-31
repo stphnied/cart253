@@ -80,7 +80,11 @@ function keyPressed() {
          if (keyCode === 32) {
             badApple.maxSpeed = random(0,15) ;
          }
-
+    }
+    else if (state == 'win'||state == 'lose') {
+        if(keyCode === ENTER) {
+            location.reload();
+        }
     }
 }
 
