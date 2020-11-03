@@ -1,4 +1,3 @@
-// Star shape code from : https://www.youtube.com/watch?v=rSp5iSTXwAY&ab_channel=Co_Dart
 class Star {
     constructor(x, y) {
         this.x = x;
@@ -22,3 +21,7 @@ class Star {
         pop();
     }
 }
+
+//  ----- POSSIBLE FUTURE FEATURES?-----
+// Grow and shrink
+// No overlap

@@ -1,6 +1,5 @@
 // STATE FUNCTIONS
 // Placeholder text in some states, will change at some point 
-
 function mainMenu() {
     displayText(`Menu`);
 }
@@ -20,6 +19,7 @@ function gameplay() {
     // Displaying Shooting Stars
     for (let i = 0; i < shootingStars.length; i++) {
         let shootingStar = shootingStars[i];
+        shootingStar.rotation += random(0,0.05);
         shootingStar.move();
         shootingStar.display();
         if (shootingStar.outerRadius < 0) {
@@ -32,3 +32,4 @@ function ending() {
     displayText(`the end`);
 
 }
+

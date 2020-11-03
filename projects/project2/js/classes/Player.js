@@ -2,7 +2,7 @@ class Player {
     constructor(x,y) {
         this.x = x;
         this.y = y;
-        this.size = 50;
+        this.size = 25;
     }
 
     handleInput() {
@@ -20,10 +20,10 @@ class Player {
     }
 
     checkTelescope(telescope) {
-
+        
     }
 
-    checkCharacters() {
-
+    checkCharacters(characters) {
+        // If mousePressed : triggers random dialogs
     }
 }
