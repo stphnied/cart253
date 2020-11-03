@@ -10,7 +10,7 @@ A stargazing simulation where the player can navigate and learn more about const
 let state = 'gameplay';
 
 let player;
-let color1, color2, color3, color4, color5, color6;
+let color1, color2;
 
 let shootingStars = [];
 let numShootingStars;
@@ -92,6 +92,7 @@ function draw() {
     }
 }
 
+// FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
 function displayBackground() {
     // Sky color (background)
     push();
@@ -111,23 +112,25 @@ function displayBackground() {
     push();
     fill(1, 20, 7);
     beginShape();
-    let xoff = 0;
-    let yoff = 0.0;
-    // Iterate over horizontal pixels
+    let xOffset = 5;
+    let yOffset = 2;
+
+    //Create point from horizontal pixel
     for (let x = 0; x <= width; x += 10) {
-        // Calculate  y value according to noise, map to
-        let y = map(noise(xoff, yoff), 0, 1, 700, 750);
-        // Set the vertex
+        // Calculate  y value according to noise, map to noise
+        let y = map(noise(xOffset, yOffset), 0, 1, 700, 750);
+
         vertex(x, y);
-        // Increment x dimension for noise
-        xoff += 0.05;
+        xOffset += 0.05;
     }
+    // setting vertex
     vertex(width, height);
     vertex(0, height);
     endShape(CLOSE);
     pop();
 }
 
+// FUNCTION displaying the characters image ------------------------------------------------------------------------
 function displayCharacter() {
     push();
     image(characters.img, characters.x, characters.y, characters.size, characters.size);
