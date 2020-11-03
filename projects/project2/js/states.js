@@ -20,6 +20,7 @@ function gameplay() {
     // Displaying Shooting Stars
     for (let i = 0; i < shootingStars.length; i++) {
         let shootingStar = shootingStars[i];
+        shootingStar.move();
         shootingStar.display();
         if (shootingStar.outerRadius < 0) {
             shootingStar.grow();

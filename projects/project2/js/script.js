@@ -25,7 +25,6 @@ let characters = {
     img:undefined
 };
 
-
 // Handling images and sound --------------------------------------------------------------
 function preload() {
     characters.img = loadImage(`assets/images/characters.png`);
@@ -92,6 +91,7 @@ function draw() {
             break;
     }
 }
+
 
 function displayCharacter() {
     push();

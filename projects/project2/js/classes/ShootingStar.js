@@ -26,15 +26,15 @@ class ShootingStar {
         this.outerRadius = constrain(this.innerRadius,0,10);
     }
 
-    // move() {
-    // this.x += pow(this.outerRadius, 0.9);
-    // this.y += pow(this.outerRadius,0.1);
+    move() {
+    this.x += pow(this.outerRadius, 0.9);
+    this.y += pow(this.outerRadius,0.1);
     
-    // if (this.x > width) {
-    //   let index = stars.indexOf(this);
-    //   stars.splice(index, 1);
-    // }
-    // }
+        // if (this.x > width) {
+        //   let index = shootingStars.indexOf(this);
+        //   shootingStars.splice(index, 1);
+        // }
+    }
 
     // rotate() {
     // }
