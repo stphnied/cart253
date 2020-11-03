@@ -11,29 +11,57 @@ A stargazing simulation where the player can navigate and learn more about const
 let state = 'gameplay';
 let player;
 let color1, color2;
+
+let shootingStars = [];
+let numShootingStars;
+
 let stars = [];
 let numStars;
 
+let characters = {
+    x:50,
+    y:0,
+    size:400,
+    img:undefined
+};
+
 
 // Handling images and sound --------------------------------------------------------------
-function preload() {}
+function preload() {
+    characters.img = loadImage(`assets/images/characters.png`);
+}
 
-// Settings up the canvas  ----------------------------------------------------------------
+// Settings up the canvas and generating elements----------------------------------------------------------------
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    player = new Player(width / 2, height / 2);
-    numStars = random(30, 100);
+    // Characters setup
+    characters.y = height/1.75;
 
-    // Generating stars
-    for (let i = 0; i < numStars; i++) {
+    // Generating player cursor 
+    player = new Player(width / 2, height / 2);
+
+    // Generating Stars
+    numStars = random(30,100);
+    numShootingStars = random(5, 30);
+
+    // Generating Stars
+    for(let i = 0; i < numStars; i++) {
+        let x = random(0, width);
+        let y = random(0,height/1.7);
+        let star = new Star(x,y);
+        stars.push(star);
+    }
+
+    // Generating Shooting Stars
+    for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
         let y = random(0, height/1.7);
         let outerRadius = random(2,8);
         let innerRadius = outerRadius/2
         let rotation = random(0,10);
-        let star = new Star(x, y, outerRadius, innerRadius, rotation);
-        stars.push(star);
+        let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
+        shootingStars.push(shootingStar);
     }
 }
 
@@ -43,9 +71,9 @@ function draw() {
     noCursor();
     noStroke();
     // Background colors
-    background(15, 94, 156);
-    color1 = color(7, 11, 52);
-    color2 = color(7, 12, 78);
+    background(0);
+    color1 = color(0, 0, 152);    //top color
+    color2 = color (8, 91, 221); //bottom color
     setGradient(0, 0, windowWidth, windowHeight / 1.5, color1, color2, "Y");
 
     // States behavior
@@ -63,8 +91,12 @@ function draw() {
             ending();
             break;
     }
+}
 
-
+function displayCharacter() {
+    push();
+    image(characters.img,characters.x,characters.y,characters.size,characters.size);
+    pop();
 }
 
 // TEXT FUNCTION ------------------------------------------------------------------------
@@ -78,12 +110,8 @@ function displayText(string) {
     pop();
 }
 
-
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
-
-function mousePressed() {
-
-}
+function mousePressed() {}
 
 function keyPressed() {
     if (state == 'gameplay') {
@@ -92,9 +120,7 @@ function keyPressed() {
             location.reload();
         }
     }
-
 }
-
 
 // Creating a gradient background --------------------------------------------------------
 // Code from : https://p5js.org/examples/color-linear-gradient.html

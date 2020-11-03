@@ -3,23 +3,28 @@
 
 function mainMenu() {
     displayText(`Menu`);
-
 }
 
 function instruction() {
     displayText(`Instruction`);
-    
 }
 
 function gameplay() {
+    displayCharacter();
     player.display();
-    for(let i =0; i < stars.length ; i++) {
+
+    for (let i = 0; i < stars.length; i++) {
         let star = stars[i];
-        // star.grow();
-        // star.move();
         star.display();
     }
-
+    // Displaying Shooting Stars
+    for (let i = 0; i < shootingStars.length; i++) {
+        let shootingStar = shootingStars[i];
+        shootingStar.display();
+        if (shootingStar.outerRadius < 0) {
+            shootingStar.grow();
+        }
+    }
 }
 
 function ending() {
