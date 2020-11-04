@@ -9,14 +9,12 @@ function instruction() {
 }
 
 function gameplay() {
-    displayCharacter();
-    player.display();
-
+    // Display stars
     for (let i = 0; i < stars.length; i++) {
         let star = stars[i];
         star.display();
     }
-    // Displaying Shooting Stars
+    // Display Shooting Stars
     for (let i = 0; i < shootingStars.length; i++) {
         let shootingStar = shootingStars[i];
         shootingStar.rotation += random(0,0.05);
@@ -26,6 +24,11 @@ function gameplay() {
             shootingStar.grow();
         }
     }
+    // Display foregroun elements
+    displayForegroundElm();
+    // Display player/mouse
+    player.display();
+    player.checkTelescope(telescope);
 }
 
 function ending() {

@@ -20,7 +20,14 @@ class Player {
     }
 
     checkTelescope(telescope) {
-        
+        let d = dist(this.x,telescope.x,this.y,telescope.y);
+        if(d <this.size/2 + telescope.size/2) {
+            console.log("gg");
+        }
+        // if( this.x > telescope.x && this.x < telescope.x + telescope.width &&
+        //     this.y > telescope.y && this.y < telescope.y + telescope.height) {
+        //         console.log('works babeeee');
+        // }
     }
 
     checkCharacters(characters) {

@@ -26,7 +26,7 @@ let characters = {
 };
 
 let telescope = {
-    x: 50,
+    x: 0,
     y: 0,
     size: 150,
     img: undefined
@@ -34,8 +34,8 @@ let telescope = {
 
 // Handling images and sound --------------------------------------------------------------
 function preload() {
-    characters.img = loadImage(`assets/images/characters.png`);
-    telescope.img = loadImage(`assets/images/telescope.png`);
+    characters.img = loadImage(`assets/images/characters03.png`);
+    telescope.img = loadImage(`assets/images/telescope03.png`);
 }
 
 // Settings up the canvas and generating elements----------------------------------------------------------------
@@ -43,13 +43,12 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
 
     // Characters setup
-    characters.x = width / 6;
-    characters.y = height / 1.75;
+    characters.x = width / 3.5;
+    characters.y = height / 1.3;
 
     // Telescope setup (to be transfered to his own js file)
-    telescope.x = width/1.5;
-    telescope.y = height /1.5;
-
+    telescope.x = width / 1.5;
+    telescope.y = height / 1.25;
 
     // Generating player cursor 
     player = new Player(width / 2, height / 2);
@@ -83,8 +82,7 @@ function setup() {
 function draw() {
     noCursor();
     noStroke();
-    // Background colors
-    background(0);
+    // Background
     displayBackground();
 
     // States behavior
@@ -106,13 +104,18 @@ function draw() {
 
 // FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
 function displayBackground() {
+    background(0);
+
     // Sky color (background)
     push();
     color1 = color(0, 0, 152); //top color
     color2 = color(8, 91, 221); //bottom color
     setGradient(0, 0, windowWidth, windowHeight / 1.5, color1, color2, "Y");
     pop();
+}
 
+// FUNCTION displaying the characters image ------------------------------------------------------------------------
+function displayForegroundElm() {
     // Water color (middleground)
     push();
     color1 = color(0, 0, 139);
@@ -123,7 +126,7 @@ function displayBackground() {
     // Grass (foreground)
     push();
     fill('#0F0C0B');
-    // old green color :  fill(1, 20, 7);
+
     beginShape();
     let xOffset = 5;
     let yOffset = 2;
@@ -141,16 +144,15 @@ function displayBackground() {
     vertex(0, height);
     endShape(CLOSE);
     pop();
-}
 
-// FUNCTION displaying the characters image ------------------------------------------------------------------------
-function displayCharacter() {
     push();
+    imageMode(CENTER);
     image(characters.img, characters.x, characters.y, characters.size, characters.size);
     pop();
 
     push();
-    image(telescope.img,telescope.x,telescope.y,telescope.size,telescope.size);
+    imageMode(CENTER);
+    image(telescope.img, telescope.x, telescope.y, telescope.size, telescope.size * 1.2);
     pop();
 }
 
@@ -166,7 +168,8 @@ function displayText(string) {
 }
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
-function mousePressed() {}
+function mousePressed() {
+}
 
 function keyPressed() {
     if (state == 'gameplay') {
