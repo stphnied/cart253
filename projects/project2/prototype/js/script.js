@@ -25,9 +25,17 @@ let characters = {
     img: undefined
 };
 
+let telescope = {
+    x: 50,
+    y: 0,
+    size: 150,
+    img: undefined
+};
+
 // Handling images and sound --------------------------------------------------------------
 function preload() {
     characters.img = loadImage(`assets/images/characters.png`);
+    telescope.img = loadImage(`assets/images/telescope.png`);
 }
 
 // Settings up the canvas and generating elements----------------------------------------------------------------
@@ -37,6 +45,10 @@ function setup() {
     // Characters setup
     characters.x = width / 6;
     characters.y = height / 1.75;
+
+    // Telescope setup (to be transfered to his own js file)
+    telescope.x = width/1.5;
+    telescope.y = height /1.5;
 
 
     // Generating player cursor 
@@ -110,7 +122,8 @@ function displayBackground() {
 
     // Grass (foreground)
     push();
-    fill(1, 20, 7);
+    fill('#0F0C0B');
+    // old green color :  fill(1, 20, 7);
     beginShape();
     let xOffset = 5;
     let yOffset = 2;
@@ -134,6 +147,10 @@ function displayBackground() {
 function displayCharacter() {
     push();
     image(characters.img, characters.x, characters.y, characters.size, characters.size);
+    pop();
+
+    push();
+    image(telescope.img,telescope.x,telescope.y,telescope.size,telescope.size);
     pop();
 }
 
