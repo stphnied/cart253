@@ -169,6 +169,8 @@ function displayText(string) {
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
+    player.checkCharacters(characters);
+    player.checkTelescope(telescope);
 }
 
 function keyPressed() {

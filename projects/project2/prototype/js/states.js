@@ -28,7 +28,6 @@ function gameplay() {
     displayForegroundElm();
     // Display player/mouse
     player.display();
-    player.checkTelescope(telescope);
 }
 
 function ending() {
