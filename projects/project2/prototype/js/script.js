@@ -32,6 +32,20 @@ let telescope = {
     img: undefined
 };
 
+let speechBubble = {
+    bubbleBody : {
+        rectX : 0,
+        rectY : 0,
+        rectW : 0,
+        rectH : 0
+    },
+
+    bubbleBtm : {
+        triX :0,
+        triY: 0
+    }
+}
+
 // Handling images and sound --------------------------------------------------------------
 function preload() {
     characters.img = loadImage(`assets/images/characters03.png`);
@@ -101,6 +115,7 @@ function draw() {
             break;
     }
 }
+
 
 // FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
 function displayBackground() {
