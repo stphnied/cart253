@@ -19,10 +19,6 @@ function setup() {
 
 function draw() {
     background(200);
-
-    // let newRate = map(mouseX, 0, width, -3, 3);
-    // barkSFX.rate(newRate);
-    userCtl2();
 }
 
 function mousePressed() {
@@ -32,6 +28,17 @@ function mousePressed() {
 
 function mouseReleased() {
     oscillator.stop();
+}
+
+
+function vid01() {
+    // let newRate = map(mouseX, 0, width, -3, 3);
+    // barkSFX.rate(newRate);
+}
+
+function vid02() {
+    userCtl();
+    userCtl2();
 }
 
 function userCtl() {
