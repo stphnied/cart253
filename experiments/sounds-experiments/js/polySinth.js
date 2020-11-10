@@ -20,7 +20,7 @@ function keyPressed() {
 }
 
 function playRandomNote() {
-    let note = notes(currentNote);
+    let note = notes[currentNote];
     synth.play(note, 1, 0, 0.25);
 
     currentNote++;
