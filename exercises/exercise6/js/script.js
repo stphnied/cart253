@@ -20,8 +20,6 @@ let circle = {
     size: 50
 }
 
-function preload() {}
-
 // setup()
 function setup() {
     createCanvas(650, 650);
@@ -73,10 +71,9 @@ function playRandomMelody() {
 // But works in the console...
 function playRandomDialog() {
     let r = random(int(0, 2));
-    dialog = dialogs[r];
+    dialog = dialogs[1];
     shuffle(dialogs, true);
-    displayText(`hello`);
-    text(dialog,width/2,height/2,24);
+    displayText(dialog);
     console.log(dialog);
 }
 

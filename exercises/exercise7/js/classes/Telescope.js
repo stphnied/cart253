@@ -1,0 +1,5 @@
+class Telescope {
+    constructor() {}
+
+    handeInput() {}
+}
