@@ -48,7 +48,7 @@ let speechBubble = {
         triY: 0
     }
 }
-
+let typewriter;
 let textIsVisible = false;
 let yuDialog;
 let yueDialog = false;
@@ -69,7 +69,7 @@ let yuDialogs = [
 let yueDialogs = [
     `Yu! The sky is so beautiful tonight`,
     `Yu, I wish tonight could last forever...`,
-    `Twinkle Twinkle little star...`,
+    `Twinkle twinkle little star...`,
     `Sometimes while gazing at the night's sky, I imagine stars looking down making wishes on the brightest of us.`,
     `They say shoot for the moon. Even if you miss, you'll land among the stars. I don't mind that.`,
     `Looking at the starry sky sure is calming.`,

@@ -27,7 +27,6 @@ function preload() {
 // Settings up the canvas and generating elements----------------------------------------------------------------
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
     // btnImg setup
     btnImg.x = width / 2;
     btnImg.y = height / 1.8;
@@ -65,6 +64,8 @@ function setup() {
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
         shootingStars.push(shootingStar);
     }
+
+    typewriter = new Typewriter();
 }
 
 //Drawing FUNCTION ------------------------------------------------------------------------
@@ -89,12 +90,7 @@ function draw() {
             break;
     }
 
-    if (textIsVisible && yuActive) {
-        displayText(yuDialog, 16, width / 5.5, height / 2);
-    }
-    else if (textIsVisible && yueActive) {
-        displayText(yueDialog, 16, width / 2, height / 2);
-    }
+    typewriter.display();
 }
 
 // FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
@@ -163,21 +159,27 @@ function displayText(string, size, x, y) {
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
-
     // Yu's Dialog
     if (!textIsVisible && yuActive) {
         yuDialog = random(yuDialogs);
         player.checkCharacters(characters);
-    } else if (textIsVisible && yuActive) {
+        typewriter.typewrite(yuDialog, width / 5.5, height / 2);
+        console.log(yuDialog);
+    } 
+    
+    else if (textIsVisible && yuActive) {
         textIsVisible = false;
         yuActive = false;
         yueActive = true;
+        
     }
     // Yue's Dialog
     if (!textIsVisible && yueActive) {
         yueDialog = random(yueDialogs);
         player.checkCharacters(characters);
+        typewriter.typewrite(yueDialog, width / 3, height / 2);
     }
+    
     else if (textIsVisible && yueActive) {
         textIsVisible = false;
         yueActive = false;
