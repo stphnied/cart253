@@ -1,3 +1,3 @@
 # Exercise 07 : Progress Report
 
-https://stphnied.github.io/cart253/exercise/exercise7
+https://stphnied.github.io/cart253/exercises/exercise7

@@ -24,10 +24,7 @@ class Player {
         // If mousePressed : triggers random dialogs
         let d = dist(mouseX, mouseY, characters.x, characters.y);
         if (d < this.size / 2 + characters.size / 2) {
-            console.log("characters");
-            console.log(yuDialogs[1]);
-            let why = yuDialogs[1];
-            displayText(why, 16, width / 2, height / 2);
+            textIsVisible = true;
         }
     }
 }

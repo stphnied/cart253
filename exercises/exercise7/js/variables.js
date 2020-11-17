@@ -1,7 +1,7 @@
 // STORING VARIABLES
 // Less long to scroll in the script.js file now!
 
-let state = 'mainMenu';
+let state = 'gameplay';
 let myFont;
 let bgSFX;
 
@@ -49,23 +49,29 @@ let speechBubble = {
     }
 }
 
+let textIsVisible = false;
+let yuDialog;
+let yueDialog = false;
+let yuActive = true;
+let yueActive = false;
+
 // -- Warning : Cheesy lines incoming! --
 // Yu is the male rabbit on the left
 let yuDialogs = [
     `Yue, did you know wishing upon a star will make your wish come true...?`,
-    `Did you know 22 different constellation names start with the letter 'C'? Coincidence... I think not!`,
-    `Did you know a constellation usually represents an animal, mythological person or creature, god, or an inanimate object?`,
-    `Did you know, Orion is the easiest to constellation to recognized?`,
-    `Did you know, the brightest constellation is Crux? (But to me, you are the brightest star...)`
+    `Yue, did you know 22 different constellation names start with the letter 'C'? Coincidence... I think not!`,
+    `Yue, did you know a constellation usually represents an animal, mythological person or creature, god, or an inanimate object?`,
+    `Yue, did you know Orion is the easiest constellation to recognized?`,
+    `Yue, did you know the brightest constellation is Crux? (But to me, you are the brightest star...)`
 ];
 
 // Yuè is the female rabbit on the right
 let yueDialogs = [
     `Yu! The sky is so beautiful tonight`,
-    `I wish tonight could last forever...`,
+    `Yu, I wish tonight could last forever...`,
     `Twinkle Twinkle little star...`,
     `Sometimes while gazing at the night's sky, I imagine stars looking down making wishes on the brightest of us.`,
     `They say shoot for the moon. Even if you miss, you'll land among the stars. I don't mind that.`,
     `Looking at the starry sky sure is calming.`,
-    `You look just like the Lepus constelaltion!`
+    `Yu, you look just like the Lepus constelaltion!`
 ];

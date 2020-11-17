@@ -88,6 +88,13 @@ function draw() {
             ending();
             break;
     }
+
+    if (textIsVisible && yuActive) {
+        displayText(yuDialog, 16, width / 5.5, height / 2);
+    }
+    else if (textIsVisible && yueActive) {
+        displayText(yueDialog, 16, width / 2, height / 2);
+    }
 }
 
 // FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
@@ -156,7 +163,27 @@ function displayText(string, size, x, y) {
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
-    player.checkCharacters(characters);
+
+    // Yu's Dialog
+    if (!textIsVisible && yuActive) {
+        yuDialog = random(yuDialogs);
+        player.checkCharacters(characters);
+    } else if (textIsVisible && yuActive) {
+        textIsVisible = false;
+        yuActive = false;
+        yueActive = true;
+    }
+    // Yue's Dialog
+    if (!textIsVisible && yueActive) {
+        yueDialog = random(yueDialogs);
+        player.checkCharacters(characters);
+    }
+    else if (textIsVisible && yueActive) {
+        textIsVisible = false;
+        yueActive = false;
+        yuActive = true;
+    }
+
     player.checkTelescope(telescope);
 
     // Button to next scene
