@@ -6,7 +6,6 @@ Stephanie Dang
 A stargazing simulation where the player can navigate and learn more about constellation
 **************************************************/
 
-
 // Variables
 // Access the variables from the variables.js file
 
@@ -159,33 +158,8 @@ function displayText(string, size, x, y) {
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
-    // Yu's Dialog
-    if (!textIsVisible && yuActive) {
-        yuDialog = random(yuDialogs);
-        player.checkCharacters(characters);
-        typewriter.typewrite(yuDialog, width / 5.5, height / 2);
-        console.log(yuDialog);
-    } 
-    
-    else if (textIsVisible && yuActive) {
-        textIsVisible = false;
-        yuActive = false;
-        yueActive = true;
-        
-    }
-    // Yue's Dialog
-    if (!textIsVisible && yueActive) {
-        yueDialog = random(yueDialogs);
-        player.checkCharacters(characters);
-        typewriter.typewrite(yueDialog, width / 3, height / 2);
-    }
-    
-    else if (textIsVisible && yueActive) {
-        textIsVisible = false;
-        yueActive = false;
-        yuActive = true;
-    }
 
+    player.checkCharacters(characters);
     player.checkTelescope(telescope);
 
     // Button to next scene

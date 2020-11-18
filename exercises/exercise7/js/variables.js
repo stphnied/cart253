@@ -68,7 +68,7 @@ let yuDialogs = [
 // Yuè is the female rabbit on the right
 let yueDialogs = [
     `Yu! The sky is so beautiful tonight`,
-    `Yu, I wish tonight could last forever...`,
+    `Yu, I wish tonight would last forever...`,
     `Twinkle twinkle little star...`,
     `Sometimes while gazing at the night's sky, I imagine stars looking down making wishes on the brightest of us.`,
     `They say shoot for the moon. Even if you miss, you'll land among the stars. I don't mind that.`,
