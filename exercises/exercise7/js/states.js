@@ -21,7 +21,7 @@ function instruction() {
 
 function gameplay() {
     // Background
-    displayBackground();
+    displayBackground(windowHeight / 1.5);
     playMusic();
 
     // Display stars
@@ -42,13 +42,23 @@ function gameplay() {
         // }
 
         if(shootingStar.x >= width) {
-            console.log('hi');
+            // console.log('hi');
         }
     }
     // Display foregroun elements
     displayForegroundElm();
     // Display player/mouse
     player.display();
+}
+
+function telescopeV() {
+    displayBackground(windowHeight);
+    for (let i = 0; i < stars.length; i++) {
+        let star = stars[i];
+        star.display();
+        star.blink();
+    }
+    telescopeView.move();
 }
 
 function ending() {

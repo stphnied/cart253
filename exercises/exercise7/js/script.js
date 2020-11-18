@@ -39,6 +39,8 @@ function setup() {
     telescope.x = width / 1.5;
     telescope.y = height / 1.25;
 
+    telescopeView = new TelescopeView();
+
     // Generating player cursor 
     player = new Player(width / 2, height / 2);
 
@@ -85,6 +87,8 @@ function draw() {
         case `gameplay`:
             gameplay();
             break;
+        case `telescopeV`:
+            telescopeV();
         case `ending`:
             ending();
             break;
@@ -94,12 +98,12 @@ function draw() {
 }
 
 // FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
-function displayBackground() {
+function displayBackground(y) {
     // Sky color (background)
     push();
     color1 = color(0, 0, 152); //top color
     color2 = color(8, 91, 221); //bottom color
-    setGradient(0, 0, windowWidth, windowHeight / 1.5, color1, color2, "Y");
+    setGradient(0, 0, windowWidth, y, color1, color2, "Y");
     pop();
 }
 
@@ -180,6 +184,11 @@ function keyPressed() {
         //KEY PRESSED ENTER : RESTART SIMULATION
         if (keyCode === ENTER) {
             location.reload();
+        }
+    }
+    else if (state == `telescopeV`) {
+        if (keyCode === ENTER) {
+            state = `gameplay`;
         }
     }
 }

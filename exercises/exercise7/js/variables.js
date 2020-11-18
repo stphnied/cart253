@@ -1,7 +1,7 @@
 // STORING VARIABLES
 // Less long to scroll in the script.js file now!
 
-let state = 'gameplay';
+let state = 'mainMenu';
 let myFont;
 let bgSFX;
 
@@ -28,6 +28,7 @@ let characters = {
     img: undefined
 };
 
+let telescopeView;
 let telescope = {
     x: 0,
     y: 0,
