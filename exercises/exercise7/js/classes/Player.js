@@ -1,3 +1,4 @@
+// Player class which allow the user to control and interact
 class Player {
     constructor(x, y) {
         this.x = x;
@@ -30,7 +31,6 @@ class Player {
                 if(yuActive) {
                     yuDialog = random(yuDialogs);
                     typewriter.typewrite(yuDialog, width / 5.5, height / 2);
-                    console.log(yuDialog);
                     textIsVisible = false
                     yuActive = false;
                     yueActive = true;
@@ -38,7 +38,6 @@ class Player {
                 else if(yueActive) {
                     yueDialog = random(yueDialogs);
                     typewriter.typewrite(yueDialog, width / 3, height / 2);
-                    console.log(yuDialog);
                     textIsVisible = false;
                     yueActive = false;
                     yuActive =true;

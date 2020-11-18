@@ -37,9 +37,9 @@ function gameplay() {
         shootingStar.move();
         shootingStar.display();
 
-        // if (shootingStar.outerRadius >=0) {
-        //     shootingStar.shrink();
-        // }
+        if (shootingStar.outerRadius >=0) {
+            shootingStar.shrink();
+        }
 
         if(shootingStar.x >= width) {
             // console.log('hi');

@@ -66,7 +66,7 @@ function setup() {
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
         shootingStars.push(shootingStar);
     }
-
+    //Generating Typewriter dialogue
     typewriter = new Typewriter();
 }
 
@@ -138,11 +138,13 @@ function displayForegroundElm() {
     endShape(CLOSE);
     pop();
 
+    // Characters
     push();
     imageMode(CENTER);
     image(characters.img, characters.x, characters.y, characters.size, characters.size);
     pop();
 
+    // Telescope
     push();
     imageMode(CENTER);
     image(telescope.img, telescope.x, telescope.y, telescope.size, telescope.size * 1.2);
@@ -187,6 +189,7 @@ function keyPressed() {
         }
     }
     else if (state == `telescopeV`) {
+        //KEY PRESSED ENTER : RETURN SIMULATION
         if (keyCode === ENTER) {
             state = `gameplay`;
         }

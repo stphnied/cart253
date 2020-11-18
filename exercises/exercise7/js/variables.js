@@ -1,6 +1,5 @@
 // STORING VARIABLES
 // Less long to scroll in the script.js file now!
-
 let state = 'mainMenu';
 let myFont;
 let bgSFX;
