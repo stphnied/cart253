@@ -2,21 +2,24 @@
 class TelescopeView {
     constructor() {
         this.revealSize = 400;
+        this.color =0;
+        this.x = width;
+        this.y = height;
     }
 
     displayBg() {
-        background(0);
+        background(this.color);
     }
 
     move() {
         translate(mouseX, mouseY);
-        fill(0);
+        fill(this.color);
         beginShape();
         // Exterior part of shape, clockwise winding
-        vertex(-width, -height);
-        vertex(width, -height);
-        vertex(width, height);
-        vertex(-width, height);
+        vertex(-this.x, -this.y);
+        vertex(this.x, -this.y);
+        vertex(this.x, this.y);
+        vertex(-this.x, this.y);
 
         // Interior part of shape, counter-clockwise winding
         beginContour();
@@ -26,9 +29,11 @@ class TelescopeView {
         vertex(this.revealSize, -this.revealSize);
         endContour();
         endShape(CLOSE);
+        
+        // Giving the round shape
         push();
         noFill();
-        stroke(0);
+        stroke(this.color);
         strokeWeight(200);
         ellipse(this.revealSize/55, -this.revealSize/50, 800);
         pop();

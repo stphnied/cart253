@@ -16,7 +16,6 @@ class Player {
     checkTelescope(telescope) {
         let d = dist(mouseX, mouseY, telescope.x, telescope.y);
         if (d < this.size / 2 + telescope.size / 2) {
-            console.log("telescope");
             state = `telescopeV`;
         }
     }
