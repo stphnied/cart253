@@ -1,5 +1,4 @@
 // STATE FUNCTIONS
-// Placeholder text in some states, will change at some point 
 function mainMenu() {
     displayText(` - CELESTIAL SKY - `, 72, width / 2, height / 2.5);
     displayText(`wish upon a star`, 32, width / 2, height / 2.05);
@@ -13,6 +12,7 @@ function instruction() {
     displayText(`Enjoy this moment and learn more about the constellation`, 42, width / 2, height / 2.5);
     // displayText(`This is your journey, you make your own decisions ...`, 32, width / 2, height / 2.15);
     displayText(`Yu and Yue's stargazing night`, 32, width / 2, height / 2.15);
+
     push();
     imageMode(CENTER);
     image(btnImg.img, btnImg.x, btnImg.y, btnImg.size, btnImg.size);
