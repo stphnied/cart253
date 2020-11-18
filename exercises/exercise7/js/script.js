@@ -26,6 +26,7 @@ function preload() {
 // Settings up the canvas and generating elements----------------------------------------------------------------
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    userStartAudio();
     // btnImg setup
     btnImg.x = width / 2;
     btnImg.y = height / 1.8;
@@ -200,5 +201,13 @@ function setGradient(x, y, w, h, c1, c2, axis) {
             stroke(d);
             line(j, y, j, y + h);
         }
+    }
+}
+
+// Play music in loop
+function playMusic() {
+    if (!bgSFX.isPlaying()) {
+        bgSFX.setVolume(0.1)
+        bgSFX.loop();
     }
 }

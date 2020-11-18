@@ -22,6 +22,7 @@ function instruction() {
 function gameplay() {
     // Background
     displayBackground();
+    playMusic();
 
     // Display stars
     for (let i = 0; i < stars.length; i++) {
