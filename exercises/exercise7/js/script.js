@@ -159,9 +159,10 @@ function displayText(string, size, x, y) {
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
-
-    player.checkCharacters(characters);
-    player.checkTelescope(telescope);
+    if(state==`gameplay`) {
+        player.checkCharacters(characters);
+        player.checkTelescope(telescope);
+    }
 
     // Button to next scene
     let dBtn = dist(mouseX, mouseY, btnImg.x, btnImg.y);

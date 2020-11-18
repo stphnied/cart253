@@ -73,5 +73,5 @@ let yueDialogs = [
     `Sometimes while gazing at the night's sky, I imagine stars looking down making wishes on the brightest of us.`,
     `They say shoot for the moon. Even if you miss, you'll land among the stars. I don't mind that.`,
     `Looking at the starry sky sure is calming.`,
-    `Yu, you look just like the Lepus constelaltion!`
+    `Yu, you look just like the Lepus constellation!`
 ];
