@@ -28,6 +28,7 @@ function gameplay() {
     for (let i = 0; i < stars.length; i++) {
         let star = stars[i];
         star.display();
+        star.blink();
     }
     // Display Shooting Stars
     for (let i = 0; i < shootingStars.length; i++) {
@@ -36,8 +37,12 @@ function gameplay() {
         shootingStar.move();
         shootingStar.display();
 
-        if (shootingStar.outerRadius >=0) {
-            shootingStar.shrink();
+        // if (shootingStar.outerRadius >=0) {
+        //     shootingStar.shrink();
+        // }
+
+        if(shootingStar.x >= width) {
+            console.log('hi');
         }
     }
     // Display foregroun elements

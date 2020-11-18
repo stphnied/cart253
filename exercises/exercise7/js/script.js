@@ -43,7 +43,7 @@ function setup() {
     player = new Player(width / 2, height / 2);
 
     // Generating Stars
-    numStars = random(50, 100);
+    numStars = random(50, 150);
     numShootingStars = random(5, 30);
 
     // Generating Stars

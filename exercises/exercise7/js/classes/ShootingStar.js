@@ -30,6 +30,11 @@ class ShootingStar {
     move() {
     this.x += pow(this.outerRadius, 0.5);
     this.y += pow(this.outerRadius,0.2);
+
+    if(this.x > width) {
+        this.x = this.x;
+        this.y = this.y;
+    }
     }
 
     display() {
