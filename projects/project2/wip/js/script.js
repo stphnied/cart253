@@ -168,10 +168,6 @@ function mousePressed() {
     if(state==`gameplay`) {
         player.checkCharacters(characters);
         // Will make the text disappear after 5 secs
-        setTimeout(() => {
-            typewriter.reset();
-        }, 5000);
-
         player.checkTelescope(telescope);
     }
 

@@ -34,6 +34,7 @@ class Player {
                     textIsVisible = false
                     yuActive = false;
                     yueActive = true;
+                    this.disappearDialogue();
                 }
                 else if(yueActive) {
                     yueDialog = random(yueDialogs);
@@ -41,8 +42,17 @@ class Player {
                     textIsVisible = false;
                     yueActive = false;
                     yuActive =true;
+                    this.disappearDialogue();
                 }
+
+                clearTimeout(this.disappearDialogue);
             }
         }
+    }
+
+    disappearDialogue() {
+            setTimeout(() => {
+            typewriter.reset();
+        }, 10000);
     }
 }
