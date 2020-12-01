@@ -38,7 +38,8 @@ class Typewriter {
   display() {
     push();
     fill(255);
-    textSize(16);
+    textSize(18);
+    textFont(myFont);
     textAlign(LEFT, BOTTOM);
     text(this.displayText, this.x, this.y);
     pop();

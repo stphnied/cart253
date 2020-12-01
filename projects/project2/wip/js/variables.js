@@ -1,9 +1,12 @@
 // STORING VARIABLES
 // Less long to scroll in the script.js file now!
-let state = 'mainMenu';
+
+//Game states
+let state = 'gameplay';
+
+// Imported assets
 let myFont;
 let bgSFX;
-
 let btnImg = {
     x: undefined,
     y: undefined,
@@ -11,22 +14,21 @@ let btnImg = {
     img: undefined
 };
 
+// Player
 let player;
+
+// Background colors
 let color1, color2;
 
+// Shootings stars
 let shootingStars = [];
 let numShootingStars;
 
+// Stars
 let stars = [];
 let numStars;
 
-let characters = {
-    x: 50,
-    y: 0,
-    size: 400,
-    img: undefined
-};
-
+// Telesscope
 let telescopeView;
 let telescope = {
     x: 0,
@@ -35,21 +37,18 @@ let telescope = {
     img: undefined
 };
 
-let speechBubble = {
-    bubbleBody: {
-        rectX: 0,
-        rectY: 0,
-        rectW: 0,
-        rectH: 0
-    },
-
-    bubbleBtn: {
-        triX: 0,
-        triY: 0
-    }
-}
+// Typewriter
 let typewriter;
 let textIsVisible = false;
+
+// Characters (Yu and Yue)
+let characters = {
+    x: 50,
+    y: 0,
+    size: 400,
+    img: undefined
+};
+
 let yuDialog;
 let yueDialog = false;
 let yuActive = true;

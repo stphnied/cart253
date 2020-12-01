@@ -9,6 +9,7 @@ class ShootingStar {
         this.rotation = rotation;
         this.growRate = 0.06;
         this.shrinkRate =0.006;
+        this.speed = random(0.5,2.2);
         this.color =255;
         this.alpha = 255;
     }
@@ -28,13 +29,15 @@ class ShootingStar {
     }
 
     move() {
-    this.x += pow(this.outerRadius, 0.5);
-    this.y += pow(this.outerRadius,0.2);
+        this.x += this.speed;
+        this.y += this.speed-0.25;
+        // this.x += pow(this.outerRadius, 0.2);
+        // this.y += pow(this.outerRadius,0.2);
 
-    if(this.x > width) {
-        this.x = this.x;
-        this.y = this.y;
-    }
+        // if(this.x > width) {
+        //     this.x = this.x;
+        //     this.y = this.y;
+        // }
     }
 
     display() {
@@ -42,6 +45,7 @@ class ShootingStar {
         fill(this.color,this.alpha);
         noStroke();
         beginShape();
+
         let theta = TAU / this.n;
         for (let i = 0; i < this.n; i++) {
             vertex(this.x + cos(i * theta  + this.rotation) * this.outerRadius, this.y + sin(i * theta + this.rotation) * this.outerRadius);

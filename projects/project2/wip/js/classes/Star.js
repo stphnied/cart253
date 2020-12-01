@@ -11,6 +11,7 @@ class Star {
         this.size = random(1, 4); //size
     }
 
+    // Displaying the stars
     display() {
         push();
         fill(this.c, this.alpha);
@@ -20,6 +21,7 @@ class Star {
         this.blink();
     }
 
+    // Blinking animation
     blink() {
         if (this.alpha < 50) {
             this.alphaAmount=1;

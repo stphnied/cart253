@@ -46,7 +46,7 @@ function setup() {
 
     // Generating Stars
     numStars = random(50, 150);
-    numShootingStars = random(5, 30);
+    numShootingStars = random(1, 3);
 
     // Generating Stars
     for (let i = 0; i < numStars; i++) {
@@ -59,22 +59,22 @@ function setup() {
     // Generating Shooting Stars
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
-        let y = random(0, height / 1.7);
-        let outerRadius = random(2, 8);
-        let innerRadius = outerRadius / 2
+        let y = random(0, height /1.2);
+        let outerRadius = random(2, 4);
+        let innerRadius = outerRadius / 2;
         let rotation = random(1, 10);
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
         shootingStars.push(shootingStar);
+        
     }
     //Generating Typewriter dialogue
     typewriter = new Typewriter();
 }
 
 //Drawing FUNCTION ------------------------------------------------------------------------
-// background & elements depending on the state of the game
+//Calling state functions
 function draw() {
     background(0);
-    // noCursor();
     noStroke();
     // States behavior
     switch (state) {
@@ -89,25 +89,46 @@ function draw() {
             break;
         case `telescopeV`:
             telescopeV();
-        case `ending`:
-            ending();
             break;
     }
 
     typewriter.display();
 }
 
-// FUNCTION creating and displaing the background visuals ------------------------------------------------------------------------
+function constellation() {
+    // Aries
+    push();
+    fill(10, 220, 255,100);
+    ellipse(50,50,10,10);
+    ellipse(150, 30, 10,10);
+    ellipse(250, 90, 10, 10);
+    ellipse(275, 150, 10, 10);
+    ellipse(275, 200, 10, 10);
+    stroke(255, 204, 255, 45);
+    strokeWeight(3);
+    line(50,50, 150, 30);
+    line(150, 30, 250, 90);
+    line(250, 90, 275, 150);
+    line(275, 150, 275,200);
+    pop();
+
+    // 
+    push();
+
+    
+    pop();
+}
+
+// FUNCTION creating and displaying the background visuals ------------------------------------------------------------------------
 function displayBackground(y) {
     // Sky color (background)
     push();
-    color1 = color(0, 0, 152); //top color
+    color1 = color(0, 0, 152,100); //top color
     color2 = color(8, 91, 221); //bottom color
     setGradient(0, 0, windowWidth, y, color1, color2, "Y");
     pop();
 }
 
-// FUNCTION displaying the characters image ------------------------------------------------------------------------
 function displayForegroundElm() {
     // Water color (middleground)
     push();
