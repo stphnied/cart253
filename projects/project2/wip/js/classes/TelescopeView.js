@@ -8,9 +8,13 @@ class TelescopeView {
     }
 
     move() {
+        // First push()/pop() to not stain the stars' color
+        // Otherwise : some stars turn black!!
+        push();
+
         translate(mouseX, mouseY);
         fill(this.color);
-        
+
         beginShape();
         
         // Exterior part of shape, clockwise winding
@@ -28,6 +32,7 @@ class TelescopeView {
         endContour();
 
         endShape(CLOSE);
+
         
         // Giving the round shape
         push();
@@ -36,5 +41,10 @@ class TelescopeView {
         strokeWeight(200);
         ellipse(this.revealSize/55, -this.revealSize/50, 800);
         pop();
+
+        displayText(` - TELESCOPE VIEW - `, 20, 0, height / 2.75);
+        displayText(` PRESS "ENTER" TO RETURN `, 10, 0, height / 2.5);
+
+        pop(); //!!DO NOT FORGET THIS IS NOT A WANDERING POP, THIS THE FIRST PUSH'S POP!!
     }
 }

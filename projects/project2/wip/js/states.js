@@ -47,16 +47,19 @@ function gameplay() {
         shootingStar.y = random(0, height / 2);
         }
     }
-    // Display foregroun elements
+
+    // Display foreground elements
     displayForegroundElm();
+
     // Display player/mouse
     player.display();
-    constellation();
+    // constellation();
 }
 
 // Gameplay : Telescope view content
 function telescopeV() {
     displayBackground(windowHeight);
+    constellation();
     for (let i = 0; i < stars.length; i++) {
         let star = stars[i];
         star.display();

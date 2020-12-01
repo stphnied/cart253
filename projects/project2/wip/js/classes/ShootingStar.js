@@ -11,7 +11,7 @@ class ShootingStar {
         this.shrinkRate =0.006;
         this.speed = random(0.5,2.2);
         this.color =255;
-        this.alpha = 255;
+        this.alpha = random(200,255);
     }
 
     grow() {
@@ -55,9 +55,3 @@ class ShootingStar {
         pop();
     }
 }
-
-
-//  ----- POSSIBLE FUTURE FEATURES?-----
-// timeOut to call stars at different time
-// Reset stars once they are off screen
-// Possibly fading away?    

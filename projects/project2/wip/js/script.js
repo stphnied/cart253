@@ -60,7 +60,7 @@ function setup() {
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
         let y = random(0, height /1.2);
-        let outerRadius = random(2, 4);
+        let outerRadius = random(2.5, 6);
         let innerRadius = outerRadius / 2;
         let rotation = random(1, 10);
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
@@ -93,30 +93,6 @@ function draw() {
     }
 
     typewriter.display();
-}
-
-function constellation() {
-    // Aries
-    push();
-    fill(10, 220, 255,100);
-    ellipse(50,50,10,10);
-    ellipse(150, 30, 10,10);
-    ellipse(250, 90, 10, 10);
-    ellipse(275, 150, 10, 10);
-    ellipse(275, 200, 10, 10);
-    stroke(255, 204, 255, 45);
-    strokeWeight(3);
-    line(50,50, 150, 30);
-    line(150, 30, 250, 90);
-    line(250, 90, 275, 150);
-    line(275, 150, 275,200);
-    pop();
-
-    // 
-    push();
-
-    
-    pop();
 }
 
 // FUNCTION creating and displaying the background visuals ------------------------------------------------------------------------
