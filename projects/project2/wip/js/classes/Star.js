@@ -1,3 +1,4 @@
+// Star class that will display and make stars blink randomly in the screen
 class Star {
     constructor(x, y) {
         this.x = x; //x position

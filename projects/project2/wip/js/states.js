@@ -1,4 +1,6 @@
+"use strict";
 // STATE FUNCTIONS
+// All functions relating to the different simulation scene
 
 // Main menu content
 function mainMenu() {
@@ -47,12 +49,8 @@ function gameplay() {
         shootingStar.rotation += random(0, 0.05);
         shootingStar.move();
         shootingStar.display();
+        shootingStar.reset();
 
-        // reset shooting stars position
-        if (shootingStar.y > height) {
-        shootingStar.x = random(0, width);
-        shootingStar.y = random(0, height / 2);
-        }
     }
 
     // Display foreground elements
@@ -60,23 +58,29 @@ function gameplay() {
 
     // Display player/mouse
     player.display();
-    // constellation();
+    constellation();
 }
 
 // Gameplay : Telescope view content
 function telescopeV() {
+    // Display background
     displayBackground(windowHeight);
+    // Display constellation
     constellation();
+
+    // display stars
     for (let i = 0; i < stars.length; i++) {
         let star = stars[i];
         star.display();
         star.blink();
     }
+    // display shooting stars
     for (let i = 0; i < shootingStars.length; i++) {
         let shootingStar = shootingStars[i];
         shootingStar.rotation += random(0, 0.05);
         shootingStar.move();
         shootingStar.display();
+        shootingStar.reset();
     }
     telescopeView.move();
 }

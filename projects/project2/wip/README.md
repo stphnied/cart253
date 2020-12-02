@@ -1,8 +1,6 @@
-# Exercise 07 : Progress Report
+# Project 02 : Work In Progress 
 
-https://stphnied.github.io/cart253/exercises/exercise7
-
-Interaction : 
+https://stphnied.github.io/cart253/projects/project2/wip/
 
 Menu & Instruction
 - Click on bunny button to access next scene

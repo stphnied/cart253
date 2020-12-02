@@ -1,9 +1,10 @@
 "use strict";
 /**************************************************
-Project 02 : Stargazing simulation (temporary name)
+CART-253, Fall 2020
+Project 02 : A Starry Night Simulation
 Stephanie Dang
 
-A stargazing simulation where the player can navigate and learn more about constellation
+A stargazing simulation where the player can navigate and interact with the environment
 **************************************************/
 
 // Variables
@@ -64,7 +65,6 @@ function setup() {
         let rotation = random(1, 10);
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
         shootingStars.push(shootingStar);
-        
     }
     //Generating Typewriter dialogue
     typewriter = new Typewriter();
@@ -75,6 +75,7 @@ function setup() {
 function draw() {
     background(0);
     noStroke();
+
     // States behavior
     switch (state) {
         case `mainMenu`:
@@ -91,6 +92,7 @@ function draw() {
             break;
     }
 
+    // Displaying typewriter
     typewriter.display();
 }
 

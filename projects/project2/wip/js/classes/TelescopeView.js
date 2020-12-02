@@ -1,3 +1,4 @@
+// TelescopeView class that will allow the user to navigate a different landscape
 // Code inspired by : https://editor.p5js.org/js6450/sketches/kWcChe550
 class TelescopeView {
     constructor() {

@@ -6,6 +6,7 @@ class Player {
         this.size = 25;
     }
 
+    // Displaying the player's cursor
     display() {
         noCursor();
         push();
@@ -14,6 +15,7 @@ class Player {
         pop();
     }
 
+    // Checking if the player collides with the telescope
     checkTelescope(telescope) {
         let d = dist(mouseX, mouseY, telescope.x, telescope.y);
         if (d < this.size / 2 + telescope.size / 2) {
@@ -21,6 +23,7 @@ class Player {
         }
     }
 
+    // Checking if the player collides with the characters
     checkCharacters(characters) {
         // If mousePressed : triggers random dialogs
         let d = dist(mouseX, mouseY, characters.x, characters.y);
@@ -50,6 +53,7 @@ class Player {
         }
     }
 
+    //Making the dialogue of the character disappear after awhile
     disappearDialogue() {
             setTimeout(() => {
             typewriter.reset();

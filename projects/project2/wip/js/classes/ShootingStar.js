@@ -1,17 +1,18 @@
+// ShootingStar Class  that will display and move shooting stars  accross the screen repeatedly 
 // Star shape code from : https://www.youtube.com/watch?v=rSp5iSTXwAY&ab_channel=Co_Dart
 class ShootingStar {
     constructor(x, y,outerRadius,innerRadius,rotation) {
-        this.x = x;
-        this.y = y;
-        this.n = 5;
-        this.outerRadius = outerRadius;
-        this.innerRadius = innerRadius;
-        this.rotation = rotation;
-        this.growRate = 0.06;
+        this.x = x;     //x pos
+        this.y = y;     //y pos
+        this.n = 5;     //number of side
+        this.outerRadius = outerRadius;     //outer radius of stars
+        this.innerRadius = innerRadius;     //inner radius of stars
+        this.rotation = rotation;           //rotating 
+        this.growRate = 0.06;               
         this.shrinkRate =0.006;
-        this.speed = random(0.5,2.2);
-        this.color =255;
-        this.alpha = random(200,255);
+        this.speed = random(0.5,2.2);       //moving speed
+        this.color =255;                    //color
+        this.alpha = random(200,255);       //color opacity
     }
 
     grow() {
@@ -28,6 +29,7 @@ class ShootingStar {
         this.innerRadius = constrain(this.innerRadius,0,10);
     }
 
+    //Moving the stars accross the screen
     move() {
         this.x += this.speed;
         this.y += this.speed-0.25;
@@ -40,6 +42,15 @@ class ShootingStar {
         // }
     }
 
+    // reset the position of the shooting stars
+    reset() {
+        if(this.y > height) {
+            this.x = random(0,width);
+            this.y = random(0,height/2);
+        }
+    }
+
+    //displaying the stars
     display() {
         push();
         fill(this.color,this.alpha);

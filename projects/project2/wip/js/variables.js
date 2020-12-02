@@ -1,8 +1,9 @@
+"use strict";
 // STORING VARIABLES
 // Less long to scroll in the script.js file now!
 
 //Game states
-let state = 'mainMenu';
+let state = 'telescopeV';
 
 // Imported assets
 let myFont;

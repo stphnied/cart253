@@ -5,13 +5,14 @@ function constellation() {
     // Aries
     push();
     fill(10, 220, 255, 100);
+    stroke(255, 250, 255, 100);
+    strokeWeight(2);
+
     ellipse(50, 50, 5);
     ellipse(150, 30, 5);
     ellipse(250, 90, 5);
     ellipse(275, 150, 5);
     ellipse(275, 200, 5);
-    stroke(255, 204, 255, 45);
-    strokeWeight(2.5);
     line(50, 50, 150, 30);
     line(150, 30, 250, 90);
     line(250, 90, 275, 150);

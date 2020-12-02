@@ -1,3 +1,4 @@
+// Typewriter class that allows the dialogue have a typewriter animation
 //  Code from : https://github.com/pippinbarr/cart253-2020/blob/master/examples/text/typewriter-effect/js/Typewriter.js
 class Typewriter {
   constructor() {
