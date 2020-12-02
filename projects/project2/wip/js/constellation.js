@@ -188,7 +188,15 @@ function constellation() {
     line(width / 2.75, height / 1.2, width / 2.6, height / 1.18); //14-4
 
 
+    // Mensa
+    ellipse(width / 1.7, height / 1.1, 3);
+    ellipse(width / 1.6, height / 1.08, 3);
+    ellipse(width / 1.52, height / 1.095, 3);
+    ellipse(width / 1.5, height / 1.19, 5);
 
+    line(width / 1.7, height / 1.1, width / 1.6, height / 1.08);
+    line(width / 1.6, height / 1.08, width / 1.52, height / 1.095);
+    line(width / 1.52, height / 1.095, width / 1.5, height / 1.19);
 
 
     pop();
