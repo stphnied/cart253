@@ -13,8 +13,15 @@ function mainMenu() {
 // Instruction content
 function instruction() {
     displayText(`Enjoy this moment and learn more about the constellation`, 42, width / 2, height / 2.5);
-    // displayText(`This is your journey, you make your own decisions ...`, 32, width / 2, height / 2.15);
     displayText(`Yu and Yue's stargazing night`, 32, width / 2, height / 2.15);
+
+    push();
+    textAlign(CENTER, CENTER);
+    textFont(myFont);
+    textSize(24);
+    fill(255,255,255,80);
+    text(`This is an interactive simulation. Click and discover the environment for a delightful experience`,width / 2, height -50)
+    pop();
 
     push();
     imageMode(CENTER);

@@ -45,17 +45,16 @@ function setup() {
     player = new Player(width / 2, height / 2);
 
     // Generating Stars
-    numStars = random(50, 150);
+    numStars = random(90, 225);
     numShootingStars = random(1, 3);
 
     // Generating Stars
     for (let i = 0; i < numStars; i++) {
         let x = random(0, width);
-        let y = random(0, height / 1.7);
+        let y = random(0, height);
         let star = new Star(x, y);
         stars.push(star);
     }
-
     // Generating Shooting Stars
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);

@@ -2,7 +2,7 @@
 // Less long to scroll in the script.js file now!
 
 //Game states
-let state = 'telescopeV';
+let state = 'mainMenu';
 
 // Imported assets
 let myFont;
