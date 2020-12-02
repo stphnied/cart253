@@ -50,7 +50,6 @@ function gameplay() {
         shootingStar.move();
         shootingStar.display();
         shootingStar.reset();
-
     }
 
     // Display foreground elements
@@ -58,7 +57,7 @@ function gameplay() {
 
     // Display player/mouse
     player.display();
-    constellation();
+    // constellation();
 }
 
 // Gameplay : Telescope view content

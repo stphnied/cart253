@@ -161,6 +161,16 @@ function displayText(string, size, x, y) {
     pop();
 }
 
+function displayConsText(string,size,x,y) {
+    push();
+    textAlign(CENTER, CENTER);
+    textSize(size);
+    textFont(myFont);
+    fill(255,255,255,50);
+    text(string, x, y);
+    pop();
+}
+
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
     if(state==`gameplay`) {

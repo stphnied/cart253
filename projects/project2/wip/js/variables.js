@@ -3,7 +3,7 @@
 // Less long to scroll in the script.js file now!
 
 //Game states
-let state = 'telescopeV';
+let state = 'gameplay';
 
 // Imported assets
 let myFont;
@@ -79,3 +79,6 @@ let yueDialogs = [
     `What a starry starry night!`,
     `Hmm...`
 ];
+
+
+let cAries,cLepus,cCass,cCrux,cChien,cUrsa,cCrater,cAntlia,cPictor,cCanes,cGemini,cMensa;
