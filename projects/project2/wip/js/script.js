@@ -177,6 +177,17 @@ function mousePressed() {
         player.checkCharacters(characters);
         // Will make the text disappear after 5 secs
         player.checkTelescope(telescope);
+
+        // Add up to 5 shooting stars 
+        if(numShootingStars < 5) {
+            numShootingStars++;
+            let outerRadius = random(2.5, 6);
+            let innerRadius = outerRadius / 2;
+            let rotation = random(1, 10);
+            let shootingStar = new ShootingStar(mouseX, mouseY, outerRadius, innerRadius, rotation);
+            shootingStars.push(shootingStar);
+            player.checkShootingStar(shootingStars);
+        }
     }
 
     // Button to next scene

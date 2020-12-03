@@ -30,21 +30,20 @@ class Player {
         if (d < this.size / 2 + characters.size / 2) {
             textIsVisible = true;
 
-            if(textIsVisible) {
-                if(yuActive) {
+            if (textIsVisible) {
+                if (yuActive) {
                     yuDialog = random(yuDialogs);
                     typewriter.typewrite(yuDialog, width / 5.5, height / 2);
                     textIsVisible = false
                     yuActive = false;
                     yueActive = true;
                     this.disappearDialogue();
-                }
-                else if(yueActive) {
+                } else if (yueActive) {
                     yueDialog = random(yueDialogs);
                     typewriter.typewrite(yueDialog, width / 3, height / 2);
                     textIsVisible = false;
                     yueActive = false;
-                    yuActive =true;
+                    yuActive = true;
                     this.disappearDialogue();
                 }
 
@@ -53,9 +52,16 @@ class Player {
         }
     }
 
+    checkShootingStar(shootingStar) {
+        // let d = dist(mouseX, mouseY, shootingStar.x, shootingStar.y);
+        // if (d< this.x / 2 + shootingStar.size / 2) {
+        //     console.log("huhihih");
+        // }
+    }
+
     //Making the dialogue of the character disappear after awhile
     disappearDialogue() {
-            setTimeout(() => {
+        setTimeout(() => {
             typewriter.reset();
         }, 10000);
     }

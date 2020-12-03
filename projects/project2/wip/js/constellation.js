@@ -18,8 +18,8 @@ function constellation() {
 
     // Aries
     push();
-    fill(10, 220, 255, 100);
-    stroke(255, 250, 255, 100);
+    fill(10, 220, 255, 150);
+    stroke(255, 250, 255, 150);
     strokeWeight(2);
 
     ellipse(50, 50, 5);

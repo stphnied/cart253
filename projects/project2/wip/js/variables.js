@@ -24,6 +24,7 @@ let color1, color2;
 // Shootings stars
 let shootingStars = [];
 let numShootingStars;
+let shootingStarTouch = false;
 
 // Stars
 let stars = [];
