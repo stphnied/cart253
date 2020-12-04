@@ -8,8 +8,6 @@ class ShootingStar {
         this.outerRadius = outerRadius;     //outer radius of stars
         this.innerRadius = innerRadius;     //inner radius of stars
         this.rotation = rotation;           //rotating 
-        this.growRate = 0.06;               
-        this.shrinkRate =0.006;
         this.speed = random(0.5,2.2);       //moving speed
         this.color =255;                    //color
         this.alpha = random(200,255);       //color opacity

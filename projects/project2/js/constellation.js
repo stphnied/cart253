@@ -213,34 +213,5 @@ function constellation() {
     line(width / 1.6, height / 1.08, width / 1.52, height / 1.095);
     line(width / 1.52, height / 1.095, width / 1.5, height / 1.19);
 
-
     pop();
-    addConstCollider();
-}
-
-function addConstCollider() {
-    // displayConsText(`ARIES`, 18, 200, 170);
-    // displayConsText(`LEPUS`, 24, width / 1.4, height / 1.4);
-    // displayConsText(`CASSIOPEIA`, 18, width - 400, 200);
-    // displayConsText(`CRUX`, 24, width / 4, height / 1.6);
-    // displayConsText(`PETIT CHIEN`, 12, width / 3.2, 120);
-    // displayConsText(`URSA MINOR`, 18, 105, height - 60);
-    // displayConsText(`CRATER`, 18, width/1.1, height/1.02);
-    // displayConsText(`ANTLIA`, 12, 50, height/1.85);
-    // displayConsText(`Pictor`, 18, width-100, height/2);
-    // displayConsText(`CANES VENATICI`, 12, width/2.2, height/2.6);
-    // displayConsText(`GEMINI`, 24, width/2.9, height/1.1);
-    // displayConsText(`MENSA`, 18, width/1.5, height/1.05);
-
-    // ARIES circle
-    // noFill();
-    // stroke(`green`);
-    // cAries =ellipse(150,100,350);
-    // cLepus = ellipse(width/1.6,height/1.7,375);
-
-    // let d1 = dist(mouseX,mouseY,cAries.x,cAries.y);
-    // if(d1 < player.size/2 + cAries.size/2) {
-    //     console.log("hiihih"
-    // }
-
 }

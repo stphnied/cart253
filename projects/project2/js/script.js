@@ -16,6 +16,7 @@ function preload() {
     characters.img = loadImage(`assets/images/characters03.png`);
     telescope.img = loadImage(`assets/images/telescope03.png`);
     btnImg.img = loadImage(`assets/images/button.png`);
+    treeBg.img = loadImage(`assets/images/tree.png`);
 
     // Sound
     bgSFX = loadSound(`assets/sounds/show_me_the_sky.mp3`);
@@ -31,6 +32,9 @@ function setup() {
     // btnImg setup
     btnImg.x = width / 2;
     btnImg.y = height / 1.8;
+
+    // Trees setup
+    treeBg.y = height / 2.7;
 
     // Characters setup
     characters.x = width / 3.5;
@@ -59,7 +63,7 @@ function setup() {
     // Generating Shooting Stars
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
-        let y = random(0, height /1.2);
+        let y = random(0, height / 1.2);
         let outerRadius = random(2.5, 6);
         let innerRadius = outerRadius / 2;
         let rotation = random(1, 10);
@@ -100,7 +104,7 @@ function draw() {
 function displayBackground(y) {
     // Sky color (background)
     push();
-    color1 = color(0, 0, 152,100); //top color
+    color1 = color(0, 0, 152, 100); //top color
     color2 = color(8, 91, 221); //bottom color
     setGradient(0, 0, windowWidth, y, color1, color2, "Y");
     pop();
@@ -140,13 +144,14 @@ function displayForegroundElm() {
     push();
     imageMode(CENTER);
     image(characters.img, characters.x, characters.y, characters.size, characters.size);
-    pop();
 
     // Telescope
-    push();
-    imageMode(CENTER);
     image(telescope.img, telescope.x, telescope.y, telescope.size, telescope.size * 1.2);
-    pop();
+
+    // Trees
+    image(treeBg.img, treeBg.x, treeBg.y, treeBg.size, treeBg.size * 2); //left
+    image(treeBg.img, width - 130, treeBg.y + 170, treeBg.size / 1.1, treeBg.size * 1.1); //right
+
 }
 
 // TEXT FUNCTION ------------------------------------------------------------------------
@@ -161,25 +166,33 @@ function displayText(string, size, x, y) {
     pop();
 }
 
-function displayConsText(string,size,x,y) {
+function displayConsText(string, size, x, y) {
     push();
     textAlign(CENTER, CENTER);
     textSize(size);
     textFont(myFont);
-    fill(255,255,255,50);
+    fill(255, 255, 255, 50);
     text(string, x, y);
+    pop();
+}
+
+// Displaying bunny button
+function displayBtn() {
+    push();
+    imageMode(CENTER);
+    image(btnImg.img, btnImg.x, btnImg.y, btnImg.size, btnImg.size);
     pop();
 }
 
 // MOUSE & KEYPRESSED FUNCTIONS ---------------------------------------------------------
 function mousePressed() {
-    if(state==`gameplay`) {
+    if (state == `gameplay`) {
         player.checkCharacters(characters);
         // Will make the text disappear after 5 secs
         player.checkTelescope(telescope);
 
         // Add up to 5 shooting stars 
-        if(numShootingStars < 11) {
+        if (numShootingStars < 11) {
             numShootingStars++;
             let outerRadius = random(2.5, 6);
             let innerRadius = outerRadius / 2;
@@ -196,7 +209,8 @@ function mousePressed() {
     if (dBtn < btnImg.size / 2) {
         if (state == `mainMenu`) {
             state = `instruction`;
-        } else if (state == `instruction`) {
+        }
+        else if (state == `instruction`) {
             state = `gameplay`;
         }
     }
@@ -208,8 +222,7 @@ function keyPressed() {
         if (keyCode === ENTER) {
             location.reload();
         }
-    }
-    else if (state == `telescopeV`) {
+    } else if (state == `telescopeV`) {
         //KEY PRESSED ENTER : RETURN SIMULATION
         if (keyCode === ENTER) {
             state = `gameplay`;
@@ -228,7 +241,8 @@ function setGradient(x, y, w, h, c1, c2, axis) {
             stroke(c);
             line(x, i, x + w, i);
         }
-    } else if (axis == "X") { // Left to right gradient
+    }
+    else if (axis == "X") { // Left to right gradient
         for (let j = x; j <= x + w; j++) {
             var inter2 = map(j, x, x + w, 0, 1);
             var d = lerpColor(c1, c2, inter2);

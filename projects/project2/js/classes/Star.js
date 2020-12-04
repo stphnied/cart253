@@ -6,9 +6,6 @@ class Star {
         this.c = 255; //color
         this.alpha = random(0, 255); //color alpha
         this.alphaAmount;   //int alpha
-        this.vx = 0; //velocity on x
-        this.vy = 0; //velocity on y
-        this.speed = 0; //speed
         this.size = random(1, 4); //size
     }
 

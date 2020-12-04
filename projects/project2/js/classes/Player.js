@@ -3,7 +3,7 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 25;
+        this.size = 10;
     }
 
     // Displaying the player's cursor
@@ -24,12 +24,13 @@ class Player {
     }
 
     // Checking if the player collides with the characters
+    // If mousePressed : triggers random dialogs
     checkCharacters(characters) {
-        // If mousePressed : triggers random dialogs
         let d = dist(mouseX, mouseY, characters.x, characters.y);
         if (d < this.size / 2 + characters.size / 2) {
             textIsVisible = true;
 
+            // Toggles between the two characters
             if (textIsVisible) {
                 if (yuActive) {
                     yuDialog = random(yuDialogs);
@@ -38,7 +39,8 @@ class Player {
                     yuActive = false;
                     yueActive = true;
                     this.disappearDialogue();
-                } else if (yueActive) {
+                }
+                else if (yueActive) {
                     yueDialog = random(yueDialogs);
                     typewriter.typewrite(yueDialog, width / 3, height / 2);
                     textIsVisible = false;
@@ -52,13 +54,14 @@ class Player {
         }
     }
 
+    // Catching the shooting stars
     checkShootingStar() {
         // let d = dist(mouseX, mouseY, shootingStar.x, shootingStar.y);
         // if (d< this.x / 2 + shootingStar.size / 2) {
         //     console.log("huhihih");
         // }
-        displayText(`10 wishes is more than enough...!`,36,width/2,height/2);
-        console.log("hokla");
+        displayText(`10 wishes is more than enough...!`, 36, width / 2, height / 2);
+        console.log("THIS WORKS! NO MORE STARS!");
     }
 
     //Making the dialogue of the character disappear after awhile

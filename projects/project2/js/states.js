@@ -6,17 +6,15 @@
 function mainMenu() {
     displayText(` - CELESTIAL SKY - `, 72, width / 2, height / 2.5);
     displayText(`wish upon a star`, 32, width / 2, height / 2.05);
-    push();
-    imageMode(CENTER);
-    image(btnImg.img, btnImg.x, btnImg.y, btnImg.size, btnImg.size);
-    pop();
+    displayBtn();
 }
 
 // Instruction content
 function instruction() {
     displayText(`Enjoy this moment and learn more about the constellation`, 42, width / 2, height / 2.5);
     displayText(`Yu and Yue's stargazing night`, 32, width / 2, height / 2.15);
-
+    displayBtn();
+    
     push();
     textAlign(CENTER, CENTER);
     textFont(myFont);
@@ -25,10 +23,6 @@ function instruction() {
     text(`This is an interactive simulation. Click and discover the environment for a delightful experience`,width / 2, height -50)
     pop();
 
-    push();
-    imageMode(CENTER);
-    image(btnImg.img, btnImg.x, btnImg.y, btnImg.size, btnImg.size);
-    pop();
 }
 
 // Gameplay content

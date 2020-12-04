@@ -18,7 +18,13 @@ let btnImg = {
 // Player
 let player;
 
-// Background colors
+// Background elem
+let treeBg = {
+    x:0,
+    y:undefined,
+    size: 400,
+    img: undefined
+}
 let color1, color2;
 
 // Shootings stars
@@ -80,6 +86,3 @@ let yueDialogs = [
     `What a starry starry night!`,
     `Hmm...`
 ];
-
-
-let cAries,cLepus,cCass,cCrux,cChien,cUrsa,cCrater,cAntlia,cPictor,cCanes,cGemini,cMensa;

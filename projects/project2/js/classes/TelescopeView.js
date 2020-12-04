@@ -17,7 +17,7 @@ class TelescopeView {
         fill(this.color);
 
         beginShape();
-        
+
         // Exterior part of shape, clockwise winding
         vertex(-this.x, -this.y);
         vertex(this.x, -this.y);
@@ -34,7 +34,6 @@ class TelescopeView {
 
         endShape(CLOSE);
 
-        
         // Giving the round shape
         push();
         noFill();

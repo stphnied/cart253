@@ -7,7 +7,7 @@ class Typewriter {
     this.fullText = ``;
     this.displayText = ``;
     this.nextChar = 0;
-    this.speed = 50;
+    this.speed = 40;
     this.interval = undefined
   }
 
