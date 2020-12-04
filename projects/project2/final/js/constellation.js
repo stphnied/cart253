@@ -7,12 +7,12 @@ function constellation() {
     displayConsText(`LEPUS`, 24, width / 1.4, height / 1.4);
     displayConsText(`CASSIOPEIA`, 18, width - 400, 200);
     displayConsText(`CRUX`, 24, width / 4, height / 1.6);
-    displayConsText(`PETIT CHIEN`, 12, width / 3.2, 120);
+    displayConsText(`PETIT CHIEN`, 18, width / 3.2, 120);
     displayConsText(`URSA MINOR`, 18, 105, height - 60);
     displayConsText(`CRATER`, 18, width/1.1, height/1.02);
-    displayConsText(`ANTLIA`, 12, 50, height/1.85);
-    displayConsText(`Pictor`, 18, width-100, height/2);
-    displayConsText(`CANES VENATICI`, 12, width/2.2, height/2.6);
+    displayConsText(`ANTLIA`, 18, 50, height/1.85);
+    displayConsText(`PICTOR`, 18, width-100, height/2);
+    displayConsText(`CANES VENATICI`, 18, width/2.2, height/2.6);
     displayConsText(`GEMINI`, 24, width/2.9, height/1.1);
     displayConsText(`MENSA`, 18, width/1.5, height/1.05);
 

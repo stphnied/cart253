@@ -52,11 +52,13 @@ class Player {
         }
     }
 
-    checkShootingStar(shootingStar) {
+    checkShootingStar() {
         // let d = dist(mouseX, mouseY, shootingStar.x, shootingStar.y);
         // if (d< this.x / 2 + shootingStar.size / 2) {
         //     console.log("huhihih");
         // }
+        displayText(`10 wishes is more than enough...!`,36,width/2,height/2);
+        console.log("hokla");
     }
 
     //Making the dialogue of the character disappear after awhile

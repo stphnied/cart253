@@ -179,7 +179,7 @@ function mousePressed() {
         player.checkTelescope(telescope);
 
         // Add up to 5 shooting stars 
-        if(numShootingStars < 5) {
+        if(numShootingStars < 11) {
             numShootingStars++;
             let outerRadius = random(2.5, 6);
             let innerRadius = outerRadius / 2;
@@ -187,6 +187,7 @@ function mousePressed() {
             let shootingStar = new ShootingStar(mouseX, mouseY, outerRadius, innerRadius, rotation);
             shootingStars.push(shootingStar);
             player.checkShootingStar(shootingStars);
+            console.log(numShootingStars);
         }
     }
 

@@ -14,32 +14,11 @@ class ShootingStar {
         this.color =255;                    //color
         this.alpha = random(200,255);       //color opacity
     }
-
-    grow() {
-        this.outerRadius += this.growRate;
-        this.innerRadius += this.growRate;
-        this.outerRadius = constrain(this.outerRadius,2,10);
-        this.innerRadius = constrain(this.innerRadius,2,10);
-    }
-
-    shrink() {
-        this.outerRadius -= this.shrinkRate;
-        this.innerRadius -= this.shrinkRate;
-        this.outerRadius = constrain(this.outerRadius,0,10);
-        this.innerRadius = constrain(this.innerRadius,0,10);
-    }
-
+    
     //Moving the stars accross the screen
     move() {
         this.x += this.speed;
         this.y += this.speed-0.25;
-        // this.x += pow(this.outerRadius, 0.2);
-        // this.y += pow(this.outerRadius,0.2);
-
-        // if(this.x > width) {
-        //     this.x = this.x;
-        //     this.y = this.y;
-        // }
     }
 
     // reset the position of the shooting stars
