@@ -207,6 +207,7 @@ function mousePressed() {
     // Button to next scene
     let dBtn = dist(mouseX, mouseY, btnImg.x, btnImg.y);
     if (dBtn < btnImg.size / 2) {
+
         if (state == `mainMenu`) {
             state = `instruction`;
         }

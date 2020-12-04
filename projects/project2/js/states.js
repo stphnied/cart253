@@ -7,6 +7,7 @@ function mainMenu() {
     displayText(` - CELESTIAL SKY - `, 72, width / 2, height / 2.5);
     displayText(`wish upon a star`, 32, width / 2, height / 2.05);
     displayBtn();
+    player.display();
 }
 
 // Instruction content
@@ -14,6 +15,7 @@ function instruction() {
     displayText(`Enjoy this moment and learn more about the constellation`, 42, width / 2, height / 2.5);
     displayText(`Yu and Yue's stargazing night`, 32, width / 2, height / 2.15);
     displayBtn();
+    player.display();
     
     push();
     textAlign(CENTER, CENTER);
@@ -51,7 +53,6 @@ function gameplay() {
 
     // Display player/mouse
     player.display();
-    // constellation();
 }
 
 // Gameplay : Telescope view content
