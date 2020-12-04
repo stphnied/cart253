@@ -3,9 +3,9 @@
 Course work for CART253!
 
 ###### Projects
-- Project 01 :[Dinotubbies](https://stphnied.github.io/cart253/projects/project1/)
-- Project 02 :[Celestial Sky](https://stphnied.github.io/cart253/projects/project2/)
-- Protect 02 :[Prototype](https://stphnied.github.io/cart253/projects/project2/prototype)
+- [Project 01 : Dinotubbies](https://stphnied.github.io/cart253/projects/project1/)
+- [Project 02 : Celestial Sky](https://stphnied.github.io/cart253/projects/project2/)
+- [Protect 02 : Prototype](https://stphnied.github.io/cart253/projects/project2/prototype)
 
 ###### Exercises
 - [Exercise 01](https://stphnied.github.io/cart253/exercises/exercise1/)
