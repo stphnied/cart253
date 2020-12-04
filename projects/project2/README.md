@@ -1,5 +1,5 @@
 # Project 02 : Celestial Sky
-Enjoy this starry night between Yu and Yue through an interactive and immersive stargazing simulation. 
+Enjoy this starry night between Yu and Yue through an interactive and immersive stargazing simulation. <br/>
 Access the project here : [Celestial Sky](https://stphnied.github.io/cart253/projects/project2/)
 
 ## Artist’s statement
