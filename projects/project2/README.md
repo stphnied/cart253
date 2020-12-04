@@ -1,15 +1,9 @@
 # Project 02 : Celestial Sky
-Enjoy this starry night between Yu and Yue through an interactive and immersive stargazing simulation.
-https://stphnied.github.io/cart253/projects/project2/
+Enjoy this starry night between Yu and Yue through an interactive and immersive stargazing simulation. 
+Access the project here : [Celestial Sky](https://stphnied.github.io/cart253/projects/project2/)
 
 ## Artist’s statement
-
-Your final project folder should include a README.md document in the main folder (projects/project2/final/README.md) 
-that contains a brief artist’s statement about your project. This statement should succinctly explain your artistic vision,
-the desired user experience, and how you believe you accomplished this both technically and artistically.
-This will help when evaluating the level of creativity you have brought to the project.
-
-
+The final project being anything we would like it to be means I could use this opportunity to apply the fundamentals of programming (p5js) I have learnt so far and create a visually pleasing yet interactive simulation. I really enjoy giving a backstory and a meaning to my project,therefore, my goal for this one was to make a story-telling simulation where users can explore and immerse themselves in this stargazing simulation. To achieve this goal, I made use of  different classes and mouse interactions to detect diverse interaction between the user and the elements in the scenes. I also implemented my own visuals and a personalized gradient background color and  a background music to simulate a starry night mood. The final result of my project reflects almost exactly what I had in mind for my proposal. Although I did not include everything I had in mind, I prioritized the most important part of my project,which was having interaction and setting up a calming vibe.The biggest challenge was to include the telescope view of my simulation and I am pleased to say that it is well implemented. 
 
 ## How-to-play
 ######  Menu & Instruction

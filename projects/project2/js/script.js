@@ -150,7 +150,7 @@ function displayForegroundElm() {
 
     // Trees
     image(treeBg.img, treeBg.x, treeBg.y, treeBg.size, treeBg.size * 2); //left
-    image(treeBg.img, width - 130, treeBg.y + 170, treeBg.size / 1.1, treeBg.size * 1.1); //right
+    image(treeBg.img, width - 100, treeBg.y + 175, treeBg.size / 1.2, treeBg.size * 1.1); //right
 
 }
 
