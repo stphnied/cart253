@@ -14,40 +14,19 @@ function mainMenu() {
 function instruction() {
     displayText(`Enjoy this moment and learn more about the constellation`, 42, width / 2, height / 2.5);
     displayText(`Yu and Yue's stargazing night`, 32, width / 2, height / 2.15);
+    displayText(`This is an interactive simulation. Click and discover the environment for a delightful experience`, 24, width / 2, height - 50, 80);
     displayBtn();
     player.display();
-    
-    push();
-    textAlign(CENTER, CENTER);
-    textFont(myFont);
-    textSize(24);
-    fill(255,255,255,80);
-    text(`This is an interactive simulation. Click and discover the environment for a delightful experience`,width / 2, height -50)
-    pop();
-
 }
 
 // Gameplay content
 function gameplay() {
     // Background
     displayBackground(windowHeight / 1.5);
+    displayAllStars();
     playMusic();
 
-    // Display stars
-    for (let i = 0; i < stars.length; i++) {
-        let star = stars[i];
-        star.display();
-        star.blink();
-    }
-    // Display Shooting Stars
-    for (let i = 0; i < shootingStars.length; i++) {
-        let shootingStar = shootingStars[i];
-        shootingStar.rotation += random(0, 0.05);
-        shootingStar.move();
-        shootingStar.display();
-        shootingStar.reset();
-    }
-
+    
     // Display foreground elements
     displayForegroundElm();
 
@@ -59,22 +38,10 @@ function gameplay() {
 function telescopeV() {
     // Display background
     displayBackground(windowHeight);
+    displayAllStars();
     // Display constellation
     constellation();
 
-    // display stars
-    for (let i = 0; i < stars.length; i++) {
-        let star = stars[i];
-        star.display();
-        star.blink();
-    }
-    // display shooting stars
-    for (let i = 0; i < shootingStars.length; i++) {
-        let shootingStar = shootingStars[i];
-        shootingStar.rotation += random(0, 0.05);
-        shootingStar.move();
-        shootingStar.display();
-        shootingStar.reset();
-    }
+
     telescopeView.move();
 }

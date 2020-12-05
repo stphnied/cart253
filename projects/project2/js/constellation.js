@@ -3,25 +3,27 @@
 
 function constellation() {
 
-    displayConsText(`ARIES`, 18, 200, 170);
-    displayConsText(`LEPUS`, 24, width / 1.4, height / 1.4);
-    displayConsText(`CASSIOPEIA`, 18, width - 400, 200);
-    displayConsText(`CRUX`, 24, width / 4, height / 1.6);
-    displayConsText(`PETIT CHIEN`, 18, width / 3.2, 120);
-    displayConsText(`URSA MINOR`, 18, 105, height - 60);
-    displayConsText(`CRATER`, 18, width/1.1, height/1.02);
-    displayConsText(`ANTLIA`, 18, 50, height/1.85);
-    displayConsText(`PICTOR`, 18, width-100, height/2);
-    displayConsText(`CANES VENATICI`, 18, width/2.2, height/2.6);
-    displayConsText(`GEMINI`, 24, width/2.9, height/1.1);
-    displayConsText(`MENSA`, 18, width/1.5, height/1.05);
+    displayText(`ARIES`, 18, 200, 170, 50);
+    displayText(`LEPUS`, 24, width / 1.4, height / 1.4, 50);
+    displayText(`CASSIOPEIA`, 18, width - 400, 200, 50);
+    displayText(`CRUX`, 24, width / 4, height / 1.6, 50);
+    displayText(`PETIT CHIEN`, 18, width / 3.2, 120, 50);
+    displayText(`URSA MINOR`, 18, 105, height - 60, 50);
+    displayText(`CRATER`, 18, width / 1.1, height / 1.02, 50);
+    displayText(`ANTLIA`, 18, 50, height / 1.8, 50);
+    displayText(`PICTOR`, 18, width - 100, height / 2, 50);
+    displayText(`CANES VENATICI`, 18, width / 2.2, height / 2.6, 50);
+    displayText(`GEMINI`, 24, width / 2.9, height / 1.1, 50);
+    displayText(`MENSA`, 18, width / 1.5, height / 1.05, 50);
 
-    // Aries
+
     push();
+    // Setting the lines and ellipse's color
     fill(10, 220, 255, 150);
     stroke(255, 250, 255, 150);
     strokeWeight(2);
 
+    // Aries
     ellipse(50, 50, 5);
     ellipse(150, 30, 5);
     ellipse(250, 90, 5);

@@ -13,8 +13,8 @@ A stargazing simulation where the player can navigate and interact with the envi
 // Handling images,sound, font --------------------------------------------------------------
 function preload() {
     // Imgs
-    characters.img = loadImage(`assets/images/characters03.png`);
-    telescope.img = loadImage(`assets/images/telescope03.png`);
+    characters.img = loadImage(`assets/images/characters.png`);
+    telescope.img = loadImage(`assets/images/telescope.png`);
     btnImg.img = loadImage(`assets/images/button.png`);
     treeBg.img = loadImage(`assets/images/tree.png`);
 
@@ -40,7 +40,7 @@ function setup() {
     characters.x = width / 3.5;
     characters.y = height / 1.3;
 
-    // Telescope setup (to be transfered to his own js file)
+    // Telescope setup
     telescope.x = width / 1.5;
     telescope.y = height / 1.25;
 
@@ -51,9 +51,6 @@ function setup() {
 
     // Generating Stars
     numStars = random(90, 225);
-    numShootingStars = random(1, 3);
-
-    // Generating Stars
     for (let i = 0; i < numStars; i++) {
         let x = random(0, width);
         let y = random(0, height);
@@ -61,10 +58,12 @@ function setup() {
         stars.push(star);
     }
     // Generating Shooting Stars
+    numShootingStars = random(1, 3);
+
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
         let y = random(0, height / 1.2);
-        let outerRadius = random(2.5, 6);
+        let outerRadius = random(2.5,6);
         let innerRadius = outerRadius / 2;
         let rotation = random(1, 10);
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
@@ -100,7 +99,7 @@ function draw() {
     typewriter.display();
 }
 
-// FUNCTION creating and displaying the background visuals ------------------------------------------------------------------------
+// FUNCTION creating and displaying the background visuals & STARS ------------------------------------------------------------------------
 function displayBackground(y) {
     // Sky color (background)
     push();
@@ -113,8 +112,8 @@ function displayBackground(y) {
 function displayForegroundElm() {
     // Water color (middleground)
     push();
-    color1 = color(0, 0, 139);
-    color2 = color(0, 72, 190);
+    color1 = color(0, 0, 139); //top color
+    color2 = color(0, 72, 190); //bottom color
     setGradient(0, height / 1.5, windowWidth, windowHeight / 5, color2, color1, "Y");
     pop();
 
@@ -151,27 +150,34 @@ function displayForegroundElm() {
     // Trees
     image(treeBg.img, treeBg.x, treeBg.y, treeBg.size, treeBg.size * 2); //left
     image(treeBg.img, width - 100, treeBg.y + 175, treeBg.size / 1.2, treeBg.size * 1.1); //right
-
 }
 
+// Displays both Stars and Shooting Stars
+function displayAllStars() {
+    // Display stars
+    for (let i = 0; i < stars.length; i++) {
+        let star = stars[i];
+        star.display();
+        star.blink();
+    }
+    // Display Shooting Stars
+    for (let i = 0; i < shootingStars.length; i++) {
+        let shootingStar = shootingStars[i];
+        shootingStar.rotation += random(0, 0.05);
+        shootingStar.move();
+        shootingStar.display();
+        shootingStar.reset();
+    }
+
+}
 // TEXT FUNCTION ------------------------------------------------------------------------
 // Displaying text
-function displayText(string, size, x, y) {
+function displayText(string, size, x, y,alpha) {
     push();
     textAlign(CENTER, CENTER);
     textSize(size);
     textFont(myFont);
-    fill(255);
-    text(string, x, y);
-    pop();
-}
-
-function displayConsText(string, size, x, y) {
-    push();
-    textAlign(CENTER, CENTER);
-    textSize(size);
-    textFont(myFont);
-    fill(255, 255, 255, 50);
+    fill(255,255,255,alpha);
     text(string, x, y);
     pop();
 }
@@ -181,6 +187,7 @@ function displayBtn() {
     push();
     imageMode(CENTER);
     image(btnImg.img, btnImg.x, btnImg.y, btnImg.size, btnImg.size);
+    displayText(`CLICK ME`,12,width/2,height/1.7,80);
     pop();
 }
 
@@ -188,11 +195,10 @@ function displayBtn() {
 function mousePressed() {
     if (state == `gameplay`) {
         player.checkCharacters(characters);
-        // Will make the text disappear after 5 secs
         player.checkTelescope(telescope);
 
-        // Add up to 5 shooting stars 
-        if (numShootingStars < 11) {
+        // Add up to 12 shooting stars 
+        if (numShootingStars < 13) {
             numShootingStars++;
             let outerRadius = random(2.5, 6);
             let innerRadius = outerRadius / 2;
@@ -200,14 +206,12 @@ function mousePressed() {
             let shootingStar = new ShootingStar(mouseX, mouseY, outerRadius, innerRadius, rotation);
             shootingStars.push(shootingStar);
             player.checkShootingStar(shootingStars);
-            console.log(numShootingStars);
         }
     }
 
     // Button to next scene
     let dBtn = dist(mouseX, mouseY, btnImg.x, btnImg.y);
     if (dBtn < btnImg.size / 2) {
-
         if (state == `mainMenu`) {
             state = `instruction`;
         }
