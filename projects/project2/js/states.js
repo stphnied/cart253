@@ -25,7 +25,6 @@ function gameplay() {
     displayBackground(windowHeight / 1.5);
     displayAllStars();
     playMusic();
-
     
     // Display foreground elements
     displayForegroundElm();
@@ -41,7 +40,5 @@ function telescopeV() {
     displayAllStars();
     // Display constellation
     constellation();
-
-
     telescopeView.move();
 }
