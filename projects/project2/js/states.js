@@ -4,6 +4,7 @@
 
 // Main menu content
 function mainMenu() {
+    background(0);
     displayText(` - CELESTIAL SKY - `, 72, width / 2, height / 2.5);
     displayText(`wish upon a star`, 32, width / 2, height / 2.05);
     displayBtn();
@@ -22,10 +23,10 @@ function instruction() {
 // Gameplay content
 function gameplay() {
     // Background
+    background(0,50);
     displayBackground(windowHeight / 1.5);
     displayAllStars();
     playMusic();
-    
     // Display foreground elements
     displayForegroundElm();
 

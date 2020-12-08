@@ -63,7 +63,7 @@ function setup() {
     for (let i = 0; i < numShootingStars; i++) {
         let x = random(0, width);
         let y = random(0, height / 1.2);
-        let outerRadius = random(2.5,6);
+        let outerRadius = random(5,10);
         let innerRadius = outerRadius / 2;
         let rotation = random(1, 10);
         let shootingStar = new ShootingStar(x, y, outerRadius, innerRadius, rotation);
@@ -76,9 +76,8 @@ function setup() {
 //Drawing FUNCTION ------------------------------------------------------------------------
 //Calling state functions
 function draw() {
-    background(0);
     noStroke();
-
+        background(0,80);
     // States behavior
     switch (state) {
         case `mainMenu`:
@@ -94,9 +93,12 @@ function draw() {
             telescopeV();
             break;
     }
-
     // Displaying typewriter
     typewriter.display();
+        if(maxWarningTxt) {
+            displayText(`12 wishes is more than enough...!`, 36, width / 2, height / 2);
+            console.log("THIS WORKS! NO MORE STARS!");
+        }
 }
 
 // FUNCTION creating and displaying the background visuals & STARS ------------------------------------------------------------------------
@@ -196,16 +198,13 @@ function mousePressed() {
     if (state == `gameplay`) {
         player.checkCharacters(characters);
         player.checkTelescope(telescope);
-
-        // Add up to 12 shooting stars 
         if (numShootingStars < 13) {
             numShootingStars++;
-            let outerRadius = random(2.5, 6);
-            let innerRadius = outerRadius / 2;
-            let rotation = random(1, 10);
-            let shootingStar = new ShootingStar(mouseX, mouseY, outerRadius, innerRadius, rotation);
+            this.outerRadius = random(2.5, 6);
+            this.innerRadius = this.outerRadius / 2;
+            this.rotation = random(1, 10);
+            let shootingStar = new ShootingStar(mouseX, mouseY, this.outerRadius, this.innerRadius, this.rotation);
             shootingStars.push(shootingStar);
-            player.checkShootingStar(shootingStars);
         }
     }
 

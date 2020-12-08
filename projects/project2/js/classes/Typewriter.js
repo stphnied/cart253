@@ -8,15 +8,16 @@ class Typewriter {
     this.displayText = ``;
     this.nextChar = 0;
     this.speed = 40;
-    this.interval = undefined
+    this.interval = undefined;
+    this.finished = true;
   }
 
   typewrite(message, x, y) {
     this.reset();
     this.fullText = message;
-    
     this.x = x;
     this.y = y;
+
     // Start our interval to call addNextCharacter repeatedly at the typewriter
     // speed so that we add characters to the displayed text over time
     this.interval = setInterval(this.addNextCharacter.bind(this), this.speed);
@@ -26,13 +27,20 @@ class Typewriter {
   addNextCharacter() {
     // First check if we've reached the end of the full text
     if (this.nextChar >= this.fullText.length) {
-      // If so, just return and don't do anything because we're finished
-      return;
+      this.finished = true; //phrase is completed
+      clearInterval(this.interval);
     }
+
     // Add the next character of the full text to the displayed next
     this.displayText += this.fullText.charAt(this.nextChar);
-    // Increase the next character by one for next time
     this.nextChar = this.nextChar + 1;
+  }
+
+  // Skip the phrase to the end
+  skipToEnd() {
+    this.displayText = this.fullText;
+    clearInterval(this.interval);
+    this.finished = true;
   }
 
   // Display the current display text at the correct location
@@ -51,6 +59,7 @@ class Typewriter {
     this.fullText = ``;
     this.displayText = ``;
     this.nextChar = 0;
+    this.finished = false;
     clearInterval(this.interval);
   }
 

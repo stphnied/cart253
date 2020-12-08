@@ -31,6 +31,7 @@ let color1, color2;
 let shootingStars = [];
 let numShootingStars;
 let shootingStarTouch = false;
+let maxWarningTxt = false;
 
 // Stars
 let stars = [];
@@ -58,8 +59,9 @@ let characters = {
 };
 
 let yuDialog;
-let yueDialog = false;
 let yuActive = true;
+
+let yueDialog = false;
 let yueActive = false;
 
 // -- Warning : Cheesy lines incoming! --
